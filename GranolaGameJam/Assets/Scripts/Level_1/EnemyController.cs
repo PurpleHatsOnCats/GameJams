@@ -5,8 +5,10 @@ using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
+    public EnemyType Type;
+
     public UnityEvent Attack;
-    public UnityEvent Move;
+    public DirectionEvent Move;
 
     private bool _frozen;
 
@@ -19,7 +21,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<CharacterMovement>().Move(FaceDirection.Stop);
     }
     /// <summary>
     /// Freeze movement and projectiles, stops AI
@@ -30,4 +32,11 @@ public class EnemyController : MonoBehaviour
         GetComponent<CharacterMovement>().Freeze(frozen);
         GetComponent<CharacterAttack>().FreezeProjectiles(frozen);
     }
+}
+
+public enum EnemyType
+{
+    Melee,
+    Ranged,
+    Boss
 }
