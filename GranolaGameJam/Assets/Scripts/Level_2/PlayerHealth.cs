@@ -170,7 +170,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             isHiding = false;
-            energyBarDepletion -= Time.deltaTime;
+            energyBarDepletion -= 2 * Time.deltaTime;
         }
     }
 

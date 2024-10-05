@@ -72,6 +72,7 @@ public class EnemyManager : MonoBehaviour
             //Mommy sprite is attacking
             mommyStates = MommyStates.attacking;
 
+            //tells animator to play Attacm animation
             animators[mommyLocation].SetInteger("MommyLocation", 5);
 
             //the child isn't hiding during attack so mommy catches them
@@ -80,7 +81,7 @@ public class EnemyManager : MonoBehaviour
                 player.Caught();
             }
         }
-        //after 1.5 seconds of attack mommy is unsuccessful and leaves
+        //after 0.7 seconds of attack mommy is unsuccessful and leaves
         else if (timer > timeInBetweenAttacks + 2.7)
         {
             //Mommy goes back to normal
