@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float MoveSpeed;
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector2 direction)
     {
-        
+        GetComponent<Rigidbody2D>().velocity = direction * MoveSpeed;
     }
 }
