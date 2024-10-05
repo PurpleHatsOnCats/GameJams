@@ -8,12 +8,13 @@ public class CharacterAttack : MonoBehaviour
     public Sprite ProjectileSprite;
     public Sprite MeleeSprite;
     
-
     public float ProjectileDamage = 1;
     public float MeleeDamage = 2;
     public float Speed = 6;
     public float ProjectileDistance = 8;
     public float MeleeDistance = 2;
+
+    private GameObject[] _projectiles;
 
     /// <summary>
     /// Create a projectile object that moves the direction the player is facing
@@ -44,5 +45,16 @@ public class CharacterAttack : MonoBehaviour
             MeleeDistance,
             gameObject.tag == "Player");
         meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
+    }
+    /// <summary>
+    /// Freezes all projectiles
+    /// </summary>
+    /// <param name="frozen"></param>
+    public void FreezeProjectiles(bool frozen)
+    {
+        for(int i = 0; i < _projectiles.Length; i++)
+        {
+            _projectiles[i].GetComponent<CharacterMovement>().Freeze(frozen);
+        }
     }
 }

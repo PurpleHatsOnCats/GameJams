@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int health = 3;
     private bool isHiding = false;
 
     private SpriteRenderer childSprite;
 
     [SerializeField]
-    private List<GameObject> devices;
-    private int deviceToDelete = 0;
+    private GameObject energyBar;
 
     [SerializeField]
-    private List<GameObject> energyBarObject;
+    private List<Sprite> energyBarSprites;
     private float energyBarDepletion = 0;
-    private int pipToDelete = 0;
+    private SpriteRenderer energyBarSprite;
+
+    Animator animator;
+
 
     /// <summary>
     /// checks if the child is hiding or not
@@ -30,7 +32,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
+        energyBarSprite = energyBar.GetComponent<SpriteRenderer>();
         childSprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -43,36 +47,97 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         //hiding and depleting energy can only happen if there are still energy pips remaining
-        if(pipToDelete != 5)
+        if(energyBarDepletion !> 150)
         {
             HandleHiding();
-            DepletePips();
+            LoseEnergy();
+            animator.SetBool("IsHiding", isHiding);
         }
         else
         {
-            //not hiding state
-            childSprite.color = Color.cyan;
-            isHiding = false;
+            //you lose
+            energyBarSprite.sprite = energyBarSprites[14];
+            SceneManager.LoadScene("Level_2");
+
         }
 
-        //if you lose the scene restarts
-        if(health == 0)
-        {
-            SceneManager.LoadScene("Level_2");
-        }
 
 
     }
 
     /// <summary>
-    /// mommy successfully snatches a device
+    /// appropriately adjusts the energy bar sprite to reflect remaining energy
     /// </summary>
-    public void DeviceTaken()
+    public void LoseEnergy()
     {
-        health--;
-        Destroy(devices[deviceToDelete]);
-        deviceToDelete++;
+        if(energyBarDepletion < 10)
+        {
+            energyBarSprite.sprite = energyBarSprites[1];
+        }
+        else if(energyBarDepletion < 20)
+        {
+            energyBarSprite.sprite = energyBarSprites[2];
+        }
+        else if (energyBarDepletion < 30)
+        {
+            energyBarSprite.sprite = energyBarSprites[3];
 
+        }
+        else if (energyBarDepletion < 40)
+        {
+            energyBarSprite.sprite = energyBarSprites[4];
+
+        }
+        else if (energyBarDepletion < 51)
+        {
+            energyBarSprite.sprite = energyBarSprites[5];
+
+        }
+        else if (energyBarDepletion < 62)
+        {
+            energyBarSprite.sprite = energyBarSprites[6];
+
+        }
+        else if (energyBarDepletion < 73)
+        {
+            energyBarSprite.sprite = energyBarSprites[7];
+        }
+        else if (energyBarDepletion < 84)
+        {
+            energyBarSprite.sprite = energyBarSprites[8];
+        }
+        else if (energyBarDepletion < 95)
+        {
+            energyBarSprite.sprite = energyBarSprites[9];
+
+        }
+        else if (energyBarDepletion < 106)
+        {
+            energyBarSprite.sprite = energyBarSprites[10];
+
+        }
+        else if (energyBarDepletion < 117)
+        {
+            energyBarSprite.sprite = energyBarSprites[11];
+        }
+        else if (energyBarDepletion < 128)
+        {
+            energyBarSprite.sprite = energyBarSprites[12];
+
+        }
+        else if (energyBarDepletion < 139)
+        {
+            energyBarSprite.sprite = energyBarSprites[13];
+        }
+
+    }
+
+    /// <summary>
+    /// mommy successfully catches the child
+    /// </summary>
+    public void Caught()
+    {
+        energyBarDepletion += 45;
     }
 
     /// <summary>
@@ -84,40 +149,18 @@ public class PlayerHealth : MonoBehaviour
         //if the player is holding space child is hiding
         if (Input.GetKey(KeyCode.Space))
         {
-            childSprite.color = Color.gray;
             isHiding = true;
 
             //energy is depleted while hiding
-            energyBarDepletion += 2 * Time.deltaTime;
+            energyBarDepletion += 4 * Time.deltaTime;
         }
         //not hiding
         else
         {
-            childSprite.color = Color.cyan;
             isHiding = false;
         }
     }
 
-    /// <summary>
-    /// destroys energy pips
-    /// </summary>
-    public void DepletePips()
-    {
-        //after every 4 seconds of hiding a pip is taken away
-        if(energyBarDepletion > 8)
-        {
-            //destroys furthest remaining energy pip
-            Destroy(energyBarObject[pipToDelete]);            
-            pipToDelete++;
-
-            //resets depletion counter
-            energyBarDepletion = 0;
-        }
-        //when a pip only has 1 second of life left it turns yellow
-        else if(energyBarDepletion > 6)
-        {
-            energyBarObject[pipToDelete].GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
-    }
+ 
 
 }

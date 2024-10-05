@@ -19,19 +19,32 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> mommyLocations;
     private SpriteRenderer activeMommySprite;
     private MommyStates mommyStates;
+    private int mommyLocation;
 
     [SerializeField]
     private PlayerHealth player;
 
     private float timer = 0;
 
+    private List<Animator> animators = new List<Animator>(3);
+
+
+
     //amount of time mommy must wait before attacking again
     private float timeInBetweenAttacks = 5;
+
+    private void Awake()
+    {
+        animators.Add(transform.GetChild(0).GetComponent<Animator>());
+        animators.Add(transform.GetChild(1).GetComponent<Animator>());
+        animators.Add(transform.GetChild(2).GetComponent<Animator>());
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -44,10 +57,13 @@ public class EnemyManager : MonoBehaviour
         if (mommyStates == MommyStates.gone && timer > timeInBetweenAttacks)
         {
             //selects the window, closet or door Mommy randomly
-            activeMommySprite = mommyLocations[Random.Range(0, 3)].GetComponent<SpriteRenderer>();
+            mommyLocation = Random.Range(0, 3);
+            activeMommySprite = mommyLocations[mommyLocation].GetComponent<SpriteRenderer>();
+
+            //activate appropriate animation
+            animators[mommyLocation].SetInteger("MommyLocation", mommyLocation);
 
             //Mommy is in location sprite
-            activeMommySprite.color = Color.blue;
             mommyStates = MommyStates.present;
         }
         //after looking around for 3 seconds she checks closer for the kill
@@ -67,7 +83,7 @@ public class EnemyManager : MonoBehaviour
             //the child isn't hiding during attack so mommy catches them
             if (!player.IsHiding)
             {
-                player.DeviceTaken();
+                player.Caught();
                 mommyStates = MommyStates.successfulAttack;
             }
         }

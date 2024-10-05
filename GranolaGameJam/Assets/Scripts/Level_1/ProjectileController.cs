@@ -13,7 +13,6 @@ public class ProjectileController : MonoBehaviour
 
     private float _distanceTraveled;
     private Vector2 _lastPosition;
-    private Rigidbody2D _thisRB;
 
     private void Update()
     {
@@ -37,8 +36,8 @@ public class ProjectileController : MonoBehaviour
     /// <param name="playerFriendly"></param>
     public void Initiate(float speed, FaceDirection direction, float damage, float distance, bool playerFriendly)
     {
-        _thisRB = GetComponent<Rigidbody2D>();
-        _thisRB.velocity = speed * GameDictionary.moveDirections[direction];
+        gameObject.GetComponent<CharacterMovement>().MoveSpeed = speed;
+        gameObject.GetComponent<CharacterMovement>().Move(direction);
 
         Damage = damage;
         PlayerFriendly = playerFriendly;
@@ -68,4 +67,5 @@ public class ProjectileController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
