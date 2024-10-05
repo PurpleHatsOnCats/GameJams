@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float damage;
+    public bool playerFriendly;
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Set initial velocity and variables
+    /// </summary>
+    /// <param name="speed"></param>
+    /// <param name="direction"></param>
+    /// <param name="damage"></param>
+    /// <param name="playerFriendly"></param>
+    public void Initiated(float speed, Vector2 direction, float damage, bool playerFriendly)
     {
-        
+        GetComponent<Rigidbody2D>().velocity = speed * direction;
+        this.damage = damage;
+        this.playerFriendly = playerFriendly;
+    }
+    /// <summary>
+    /// Destroys object and damages character when collided 
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && playerFriendly)
+        {
+            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(damage);
+        }
+        else if (collision.gameObject.tag == "Player" && !playerFriendly)
+        {
+            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 }

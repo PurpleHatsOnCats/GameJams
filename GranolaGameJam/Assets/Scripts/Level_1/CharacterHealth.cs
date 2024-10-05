@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Health;
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Decreases health by a specified amount
+    /// </summary>
+    /// <param name="amount"></param>
+    public void TakeDamage(float amount)
     {
-        
+        Health -= amount;
     }
 }
