@@ -11,7 +11,6 @@ public class EnemyManager : MonoBehaviour
         gone,
         present,
         attacking,
-        successfulAttack
     }
 
     [SerializeField]
@@ -19,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     private SpriteRenderer activeMommySprite;
     private MommyStates mommyStates;
     private int mommyLocation;
+    private float attackNumber = 0;
 
     [SerializeField]
     private PlayerHealth player;
@@ -67,10 +67,9 @@ public class EnemyManager : MonoBehaviour
         }
         //after looking around for 3 seconds she checks closer for the kill
         //she goes in for the kid
-        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 2.5)
+        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 2)
         {
             //Mommy sprite is attacking
-            activeMommySprite.color = Color.red;
             mommyStates = MommyStates.attacking;
 
             animators[mommyLocation].SetInteger("MommyLocation", 5);
@@ -79,30 +78,36 @@ public class EnemyManager : MonoBehaviour
             if (!player.IsHiding)
             {
                 player.Caught();
-                mommyStates = MommyStates.successfulAttack;
             }
         }
-        //when mommy goes in the kid wasn't hiding
-        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 3.5)
-        {
-            activeMommySprite.color = Color.green;
-
-        }
         //after 1.5 seconds of attack mommy is unsuccessful and leaves
-        else if (timer > timeInBetweenAttacks + 3)
+        else if (timer > timeInBetweenAttacks + 2.7)
         {
             //Mommy goes back to normal
-            activeMommySprite.color = Color.white;
             mommyStates = MommyStates.gone;
+            attackNumber++;
 
             timer = 0;
 
             animators[mommyLocation].SetInteger("MommyLocation", 4);
 
-            //increases the speed of mommy attacks
-            if (timeInBetweenAttacks > 3)
+            //the first 3 attack are all 5 seconds inbetween
+            //then Mommy gets generally faster after every 3 attacks
+            if (attackNumber > 2 && attackNumber < 5)
             {
-                timeInBetweenAttacks--;
+                timeInBetweenAttacks = Random.Range(4, 7);
+            }
+            else if(attackNumber < 8)
+            {
+                timeInBetweenAttacks = Random.Range(3, 7);
+            }
+            else if (attackNumber < 11)
+            {
+                timeInBetweenAttacks = Random.Range(2, 6);
+            }
+            else if (attackNumber < 14)
+            {
+                timeInBetweenAttacks = Random.Range(1, 6);
             }
 
         }
