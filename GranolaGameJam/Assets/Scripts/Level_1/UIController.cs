@@ -11,7 +11,15 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (StickUnlocked)
+        {
+            // Display Stick
+        }
+        if (RockUnlocked)
+        {
+            // Display Rock
+        }
+        //Display health amount
     }
     /// <summary>
     /// Unlocks a specific weapon

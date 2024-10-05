@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 215915053}
   - component: {fileID: 215915052}
   - component: {fileID: 215915051}
+  - component: {fileID: 215915054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -214,6 +215,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &215915054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215915050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbbc775e6308bf42846c4a6fbd656e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 492713137}
+  LevelSize: {x: 16, y: 9}
 --- !u!1 &492713137
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,9 +353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 1101044016690836092, guid: cab0b44f31be0ab4684eab6e21ecd1d9, type: 3}
-  MeleePrefab: {fileID: 0}
+  ProjectileSprite: {fileID: 0}
+  MeleeSprite: {fileID: 0}
   ProjectileDamage: 1
   MeleeDamage: 2
+  Speed: 6
+  ProjectileDistance: 8
+  MeleeDistance: 2
 --- !u!50 &492713142
 Rigidbody2D:
   serializedVersion: 4
@@ -474,7 +493,7 @@ Transform:
   m_GameObject: {fileID: 492713137}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.05, y: 1.13, z: 0}
+  m_LocalPosition: {x: 0.67, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

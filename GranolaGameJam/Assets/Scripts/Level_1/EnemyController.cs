@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public UnityEvent Attack;
     public UnityEvent Move;
 
+    private bool _frozen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,13 @@ public class EnemyController : MonoBehaviour
     {
         
     }
-
-
+    /// <summary>
+    /// Freeze movement and projectiles, stops AI
+    /// </summary>
+    /// <param name="frozen"></param>
+    public void Freeze(bool frozen)
+    {
+        GetComponent<CharacterMovement>().Freeze(frozen);
+        GetComponent<CharacterAttack>().FreezeProjectiles(frozen);
+    }
 }
