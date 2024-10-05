@@ -60,6 +60,7 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && PlayerFriendly)
         {
+            Debug.Log("Hit enemy, damage: " + Damage);
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
             Destroy(gameObject);
         }

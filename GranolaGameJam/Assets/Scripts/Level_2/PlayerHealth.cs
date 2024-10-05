@@ -69,7 +69,11 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void LoseEnergy()
     {
-        if(energyBarDepletion < 10)
+        if(energyBarDepletion < 5)
+        {
+            //sprite stays the same
+        }
+        else if(energyBarDepletion < 10) 
         {
             energyBarSprite.sprite = energyBarSprites[0];
         }
@@ -160,12 +164,13 @@ public class PlayerHealth : MonoBehaviour
             isHiding = true;
 
             //energy is depleted while hiding
-            energyBarDepletion += 6 * Time.deltaTime;
+            energyBarDepletion += 7 * Time.deltaTime;
         }
         //not hiding
         else
         {
             isHiding = false;
+            energyBarDepletion -= Time.deltaTime;
         }
     }
 
