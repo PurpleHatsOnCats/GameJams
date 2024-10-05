@@ -5,35 +5,44 @@ using UnityEngine;
 public class CharacterAttack : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
-    public GameObject MeleePrefab;
+    public Sprite ProjectileSprite;
+    public Sprite MeleeSprite;
+    
 
     public float ProjectileDamage = 1;
     public float MeleeDamage = 2;
+    public float Speed = 6;
+    public float ProjectileDistance = 8;
+    public float MeleeDistance = 2;
 
     /// <summary>
     /// Create a projectile object that moves the direction the player is facing
     /// </summary>
     public void ProjectileAttack()
     {
+        Debug.Log("Projectile method called");
+
         GameObject projectileObject = Instantiate(ProjectilePrefab, transform.position, new Quaternion());
         projectileObject.GetComponent<ProjectileController>().Initiate(
-            3, // speed
+            Speed,
             gameObject.GetComponent<CharacterMovement>().Direction, 
             ProjectileDamage,
-            4, // distance
+            ProjectileDistance, 
             gameObject.tag == "Player");
+        projectileObject.GetComponent<SpriteRenderer>().sprite = ProjectileSprite;
     }
     /// <summary>
     /// Create a melee object that moves the direction the player is facing
     /// </summary>
     public void MeleeAttack()
     {
-        GameObject meleeObject = Instantiate(MeleePrefab, transform.position, new Quaternion());
+        GameObject meleeObject = Instantiate(ProjectilePrefab, transform.position, new Quaternion());
         meleeObject.GetComponent<ProjectileController>().Initiate(
-            3, // speed
+            Speed,
             gameObject.GetComponent<CharacterMovement>().Direction,
             MeleeDamage,
-            2, // distance
+            MeleeDistance,
             gameObject.tag == "Player");
+        meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
     }
 }

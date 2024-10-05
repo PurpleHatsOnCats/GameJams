@@ -13,10 +13,7 @@ public class PlayerController : MonoBehaviour
     public int AttackOneButton;
     public int AttackTwoButton;
 
-    public UnityEvent MoveUp;
-    public UnityEvent MoveDown;
-    public UnityEvent MoveLeft;
-    public UnityEvent MoveRight;
+    public DirectionEvent Move;
     public UnityEvent Jump;
     public UnityEvent InteractDown;
     public UnityEvent InteractUp;
@@ -35,19 +32,23 @@ public class PlayerController : MonoBehaviour
         // Check for keyboard input
         if (Input.GetKey(UpKey))
         {
-            MoveUp.Invoke();
+            Move.Invoke(FaceDirection.Up);
         }
-        if (Input.GetKey(DownKey))
+        else if (Input.GetKey(DownKey))
         {
-            MoveDown.Invoke();
+            Move.Invoke(FaceDirection.Down);
         }
-        if (Input.GetKey(LeftKey))
+        else if (Input.GetKey(LeftKey))
         {
-            MoveLeft.Invoke();
+            Move.Invoke(FaceDirection.Left);
         }
-        if (Input.GetKey(RightKey))
+        else if (Input.GetKey(RightKey))
         {
-            MoveRight.Invoke();
+            Move.Invoke(FaceDirection.Right);
+        }
+        else
+        {
+            Move.Invoke(FaceDirection.Stop);
         }
         if (Input.GetKeyDown(InteractKey))
         {

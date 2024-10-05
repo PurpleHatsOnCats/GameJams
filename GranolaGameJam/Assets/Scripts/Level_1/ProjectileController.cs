@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [HideInInspector]
     public float Damage;
+    [HideInInspector]
     public bool PlayerFriendly;
+    [HideInInspector]
     public float MaxDistance;
 
     private float _distanceTraveled;
@@ -42,6 +45,7 @@ public class ProjectileController : MonoBehaviour
         MaxDistance = distance;
 
         _lastPosition = transform.position;
+
     }
     /// <summary>
     /// Destroys object and damages character when collided 
@@ -52,11 +56,16 @@ public class ProjectileController : MonoBehaviour
         if(collision.gameObject.tag == "Enemy" && PlayerFriendly)
         {
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
+            Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "Player" && !PlayerFriendly)
         {
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 }
