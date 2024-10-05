@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class GameDictionary
 {
@@ -18,4 +19,8 @@ public enum FaceDirection
     Up,
     Left,
     Down
+}
+public class IntEvent : UnityEvent<int>
+{
+
 }
