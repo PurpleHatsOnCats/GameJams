@@ -64,16 +64,21 @@ public class EnemyManager : MonoBehaviour
             activeMommySprite.color = Color.red;
             mommyStates = MommyStates.attacking;
 
+            //the child isn't hiding during attack so mommy catches them
+            if (!player.IsHiding)
+            {
+                player.DeviceTaken();
+                mommyStates = MommyStates.successfulAttack;
+            }
         }
         //when mommy goes in the kid wasn't hiding
-        else if(mommyStates == MommyStates.successfulAttack)
+        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 5)
         {
             activeMommySprite.color = Color.green;
-            timer = 0;
 
         }
         //after 1.5 seconds of attack mommy is unsuccessful and leaves
-        else if(timer > timeInBetweenAttacks + 5)
+        else if (timer > timeInBetweenAttacks + 5)
         {
             //Mommy goes back to normal
             activeMommySprite.color = Color.white;
@@ -81,32 +86,17 @@ public class EnemyManager : MonoBehaviour
 
             timer = 0;
 
-            //if mommy hasn't attacked this attack phase she attacks
-            
-            Attack();
-            
 
             //increases the speed of mommy attacks
-            if(timeInBetweenAttacks > 3)
+            if (timeInBetweenAttacks > 3)
             {
                 timeInBetweenAttacks--;
             }
+
         }
 
     }
 
-    /// <summary>
-    /// Mommy checks if the player is hiding
-    /// if they aren't health(a device) is taken
-    /// </summary>
-    public void Attack()
-    {
-        if (!player.IsHiding)
-        {
-            player.Health--;
-            mommyStates = MommyStates.successfulAttack;
-        }
-    }
 
 
 }
