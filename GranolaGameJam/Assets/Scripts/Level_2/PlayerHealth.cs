@@ -11,6 +11,10 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer childSprite;
 
     [SerializeField]
+    private List<GameObject> devices;
+    private int deviceToDelete = 0;
+
+    [SerializeField]
     private List<GameObject> energyBarObject;
     private float energyBarDepletion = 0;
     private int pipToDelete = 0;
@@ -21,15 +25,6 @@ public class PlayerHealth : MonoBehaviour
     public bool IsHiding
     {
         get { return isHiding; }
-    }
-
-    /// <summary>
-    /// checks the health of the child and allows it to be altered
-    /// </summary>
-    public int Health
-    {
-        get { return health; }
-        set { health = value; }
     }
 
     void Awake()
@@ -59,8 +54,22 @@ public class PlayerHealth : MonoBehaviour
             isHiding = false;
         }
 
+        if(health == 0)
+        {
+            //youlose
+        }
 
 
+    }
+
+    /// <summary>
+    /// mommy successfully snatches a device
+    /// </summary>
+    public void DeviceTaken()
+    {
+        health--;
+        Destroy(devices[deviceToDelete]);
+        deviceToDelete++;
 
     }
 
