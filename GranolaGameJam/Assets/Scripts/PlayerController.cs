@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             AttackOne.Invoke();
         }
-        if (Input.GetMouseButtonDown(AttackOneButton))
+        if (Input.GetMouseButtonDown(AttackTwoButton))
         {
             AttackTwo.Invoke();
         }

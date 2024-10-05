@@ -39,6 +39,12 @@ public class ProjectileController : MonoBehaviour
         gameObject.GetComponent<CharacterMovement>().MoveSpeed = speed;
         gameObject.GetComponent<CharacterMovement>().Move(direction);
 
+        if(direction == FaceDirection.Left)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        
+
         Damage = damage;
         PlayerFriendly = playerFriendly;
         MaxDistance = distance;

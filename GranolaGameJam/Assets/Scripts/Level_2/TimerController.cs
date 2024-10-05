@@ -29,7 +29,7 @@ public class TimerController : MonoBehaviour
         timer += Time.deltaTime;   
 
         //an hour is every 20 seconds
-        if(timer >= 20)
+        if(timer >= 15)
         {
             timeOfDay++;
             timer = 0;
