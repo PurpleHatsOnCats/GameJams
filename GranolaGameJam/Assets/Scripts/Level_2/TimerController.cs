@@ -27,13 +27,14 @@ public class TimerController : MonoBehaviour
     {
         timer += Time.deltaTime;   
 
+        //an hour is every 20 seconds
         if(timer >= 20)
         {
             timeOfDay++;
             timer = 0;
         }
 
-
+        //changes the sprite of clock acording to time passed
         switch (timeOfDay){
             case 1:
                 timerSprite.sprite = sprites[0];
