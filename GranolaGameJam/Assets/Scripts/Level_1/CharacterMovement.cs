@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float MoveSpeed;
+    public FaceDirection Direction;
 
-    // Update is called once per frame
-    void Update()
+    public void Move(FaceDirection direction)
     {
-        
+        GetComponent<Rigidbody2D>().velocity = GameDictionary.moveDirections[direction] * MoveSpeed;
+        Direction = direction;
     }
 }
+

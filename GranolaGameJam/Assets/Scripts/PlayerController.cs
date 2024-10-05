@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public KeyCode LeftKey;
     public KeyCode RightKey;
     public KeyCode InteractKey;
+    public int AttackOneButton;
+    public int AttackTwoButton;
 
     public UnityEvent MoveUp;
     public UnityEvent MoveDown;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public UnityEvent Jump;
     public UnityEvent InteractDown;
     public UnityEvent InteractUp;
+    public UnityEvent AttackOne;
+    public UnityEvent AttackTwo;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check for keyboard input
         if (Input.GetKey(UpKey))
         {
             MoveUp.Invoke();
@@ -57,5 +62,14 @@ public class PlayerController : MonoBehaviour
             Jump.Invoke();
         }
 
+        // Check for mouse input
+        if (Input.GetMouseButtonDown(AttackOneButton))
+        {
+            AttackOne.Invoke();
+        }
+        if (Input.GetMouseButtonDown(AttackOneButton))
+        {
+            AttackTwo.Invoke();
+        }
     }
 }

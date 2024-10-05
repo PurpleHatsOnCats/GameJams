@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
+    public UnityEvent Attack;
+    public UnityEvent Move;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +19,6 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+
+
 }
