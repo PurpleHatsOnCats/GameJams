@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -54,9 +55,10 @@ public class PlayerHealth : MonoBehaviour
             isHiding = false;
         }
 
+        //if you lose the scene restarts
         if(health == 0)
         {
-            //youlose
+            SceneManager.LoadScene("Level_2");
         }
 
 
