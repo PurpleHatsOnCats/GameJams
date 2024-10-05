@@ -67,7 +67,7 @@ public class EnemyManager : MonoBehaviour
         }
         //after looking around for 3 seconds she checks closer for the kill
         //she goes in for the kid
-        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 2)
+        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 2.5)
         {
             //Mommy sprite is attacking
             activeMommySprite.color = Color.red;
@@ -83,7 +83,7 @@ public class EnemyManager : MonoBehaviour
             }
         }
         //when mommy goes in the kid wasn't hiding
-        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 3)
+        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 3.5)
         {
             activeMommySprite.color = Color.green;
 
