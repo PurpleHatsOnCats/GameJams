@@ -56,7 +56,6 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             //you lose
-            energyBarSprite.sprite = energyBarSprites[14];
             SceneManager.LoadScene("Level_2");
 
         }
@@ -72,62 +71,71 @@ public class PlayerHealth : MonoBehaviour
     {
         if(energyBarDepletion < 10)
         {
-            energyBarSprite.sprite = energyBarSprites[1];
+            energyBarSprite.sprite = energyBarSprites[0];
         }
         else if(energyBarDepletion < 20)
         {
-            energyBarSprite.sprite = energyBarSprites[2];
+            energyBarSprite.sprite = energyBarSprites[1];
         }
         else if (energyBarDepletion < 30)
         {
-            energyBarSprite.sprite = energyBarSprites[3];
+            energyBarSprite.sprite = energyBarSprites[2];
 
         }
         else if (energyBarDepletion < 40)
         {
+            energyBarSprite.sprite = energyBarSprites[3];
+
+        }
+        else if (energyBarDepletion < 50)
+        {
             energyBarSprite.sprite = energyBarSprites[4];
 
         }
-        else if (energyBarDepletion < 51)
+        else if (energyBarDepletion < 60)
         {
             energyBarSprite.sprite = energyBarSprites[5];
 
         }
-        else if (energyBarDepletion < 62)
+        else if (energyBarDepletion < 70)
         {
             energyBarSprite.sprite = energyBarSprites[6];
-
         }
-        else if (energyBarDepletion < 73)
+        else if (energyBarDepletion < 80)
         {
             energyBarSprite.sprite = energyBarSprites[7];
         }
-        else if (energyBarDepletion < 84)
+        else if (energyBarDepletion < 90)
         {
             energyBarSprite.sprite = energyBarSprites[8];
+
         }
-        else if (energyBarDepletion < 95)
+        else if (energyBarDepletion < 100)
         {
             energyBarSprite.sprite = energyBarSprites[9];
 
         }
-        else if (energyBarDepletion < 106)
+        else if (energyBarDepletion < 110)
         {
             energyBarSprite.sprite = energyBarSprites[10];
-
         }
-        else if (energyBarDepletion < 117)
+        else if (energyBarDepletion < 120)
         {
             energyBarSprite.sprite = energyBarSprites[11];
-        }
-        else if (energyBarDepletion < 128)
-        {
-            energyBarSprite.sprite = energyBarSprites[12];
 
         }
-        else if (energyBarDepletion < 139)
+        else if (energyBarDepletion < 130)
+        {
+            energyBarSprite.sprite = energyBarSprites[12];
+        }
+        else if (energyBarDepletion < 140)
+        {
+            energyBarSprite.sprite = energyBarSprites[12];
+        }
+        else
         {
             energyBarSprite.sprite = energyBarSprites[13];
+
         }
 
     }
