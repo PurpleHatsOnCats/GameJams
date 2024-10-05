@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8af79375c7c06064eb6bebacf373c12c
+guid: c192b4177bea6174aae7a64ad09c77c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,49 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 5
-        width: 105
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94f5994b1873e8844aa95df6cd4e1e85
-      internalID: -818983332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 7
-        width: 103
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84d35b238f229ea44924aa7da941f025
-      internalID: 1874783278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -174,9 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Level2_ChildAwakeSpritesheet_0: -818983332
-      Level2_ChildAwakeSpritesheet_1: 1874783278
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
