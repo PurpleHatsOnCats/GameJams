@@ -10,7 +10,6 @@ public class EnemyManager : MonoBehaviour
     {
         gone,
         present,
-        aboutToAttack,
         attacking,
         successfulAttack
     }
@@ -67,18 +66,14 @@ public class EnemyManager : MonoBehaviour
             mommyStates = MommyStates.present;
         }
         //after looking around for 3 seconds she checks closer for the kill
-        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 3)
-        {
-            //Mommy sprite for when she is about to attack
-            activeMommySprite.color = Color.yellow;
-            mommyStates = MommyStates.aboutToAttack;
-        }
         //she goes in for the kid
-        else if(mommyStates == MommyStates.aboutToAttack && timer > timeInBetweenAttacks + 3.5)
+        else if(mommyStates == MommyStates.present && timer > timeInBetweenAttacks + 2)
         {
             //Mommy sprite is attacking
             activeMommySprite.color = Color.red;
             mommyStates = MommyStates.attacking;
+
+            animators[mommyLocation].SetInteger("MommyLocation", 5);
 
             //the child isn't hiding during attack so mommy catches them
             if (!player.IsHiding)
@@ -88,13 +83,13 @@ public class EnemyManager : MonoBehaviour
             }
         }
         //when mommy goes in the kid wasn't hiding
-        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 5)
+        else if(mommyStates == MommyStates.successfulAttack && timer < timeInBetweenAttacks + 3)
         {
             activeMommySprite.color = Color.green;
 
         }
         //after 1.5 seconds of attack mommy is unsuccessful and leaves
-        else if (timer > timeInBetweenAttacks + 5)
+        else if (timer > timeInBetweenAttacks + 3)
         {
             //Mommy goes back to normal
             activeMommySprite.color = Color.white;
@@ -102,6 +97,7 @@ public class EnemyManager : MonoBehaviour
 
             timer = 0;
 
+            animators[mommyLocation].SetInteger("MommyLocation", 4);
 
             //increases the speed of mommy attacks
             if (timeInBetweenAttacks > 3)

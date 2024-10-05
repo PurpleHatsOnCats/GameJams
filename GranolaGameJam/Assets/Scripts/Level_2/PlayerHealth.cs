@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         //hiding and depleting energy can only happen if there are still energy pips remaining
-        if(energyBarDepletion !> 150)
+        if(energyBarDepletion < 150)
         {
             HandleHiding();
             LoseEnergy();
@@ -137,7 +137,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void Caught()
     {
-        energyBarDepletion += 45;
+        energyBarDepletion += 35;
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public class PlayerHealth : MonoBehaviour
             isHiding = true;
 
             //energy is depleted while hiding
-            energyBarDepletion += 4 * Time.deltaTime;
+            energyBarDepletion += 6 * Time.deltaTime;
         }
         //not hiding
         else
