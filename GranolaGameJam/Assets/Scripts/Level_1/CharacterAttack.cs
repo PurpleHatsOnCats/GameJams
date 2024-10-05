@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAttack : MonoBehaviour
@@ -10,41 +8,79 @@ public class CharacterAttack : MonoBehaviour
     
     public float ProjectileDamage = 1;
     public float MeleeDamage = 2;
-    public float Speed = 6;
+    public float ProjectileSpeed = 10;
+    public float MeleeSpeed = 6;
+    public float Cooldown = 0.7f;
     public float ProjectileDistance = 8;
     public float MeleeDistance = 2;
 
     private GameObject[] _projectiles;
+    private float AttackCooldown;
+
+    private void Update()
+    {
+        if(AttackCooldown > 0)
+        {
+            AttackCooldown -= Time.deltaTime;
+            GetComponent<CharacterMovement>().FreezeMovement(true);
+            if (AttackCooldown <= 0)
+            {
+                GetComponent<CharacterMovement>().FreezeMovement(false);
+            }
+        }
+        if(AttackCooldown < 0)
+        {
+            AttackCooldown = 0;
+        }
+    }
 
     /// <summary>
     /// Create a projectile object that moves the direction the player is facing
     /// </summary>
     public void ProjectileAttack()
     {
-        Debug.Log("Projectile method called");
+        if(AttackCooldown == 0)
+        {
+            // Spawn projectile
+            GameObject projectileObject = Instantiate(
+                ProjectilePrefab, 
+                transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*0.5f, 
+                new Quaternion());
+            projectileObject.GetComponent<SpriteRenderer>().sprite = ProjectileSprite;
+            projectileObject.GetComponent<ProjectileController>().Initiate(
+                ProjectileSpeed,
+                gameObject.GetComponent<CharacterMovement>().Direction,
+                ProjectileDamage,
+                ProjectileDistance,
+                gameObject.tag == "Player");
 
-        GameObject projectileObject = Instantiate(ProjectilePrefab, transform.position, new Quaternion());
-        projectileObject.GetComponent<ProjectileController>().Initiate(
-            Speed,
-            gameObject.GetComponent<CharacterMovement>().Direction, 
-            ProjectileDamage,
-            ProjectileDistance, 
-            gameObject.tag == "Player");
-        projectileObject.GetComponent<SpriteRenderer>().sprite = ProjectileSprite;
+            // Set Cooldown
+            AttackCooldown = Cooldown;
+        }
     }
     /// <summary>
     /// Create a melee object that moves the direction the player is facing
     /// </summary>
     public void MeleeAttack()
     {
-        GameObject meleeObject = Instantiate(ProjectilePrefab, transform.position, new Quaternion());
-        meleeObject.GetComponent<ProjectileController>().Initiate(
-            Speed,
-            gameObject.GetComponent<CharacterMovement>().Direction,
-            MeleeDamage,
-            MeleeDistance,
-            gameObject.tag == "Player");
-        meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
+        if (AttackCooldown == 0)
+        {
+            // Spawn projectile
+            GameObject meleeObject = Instantiate(
+                ProjectilePrefab,
+                transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction] * 0.5f,
+                new Quaternion());
+            meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
+            meleeObject.GetComponent<ProjectileController>().Initiate(
+                MeleeSpeed,
+                gameObject.GetComponent<CharacterMovement>().Direction,
+                MeleeDamage,
+                MeleeDistance,
+                gameObject.tag == "Player");
+
+            // Set Cooldown
+            AttackCooldown = Cooldown;
+        }
     }
     /// <summary>
     /// Freezes all projectiles
