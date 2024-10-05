@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CharacterAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject ProjectilePrefab;
+    public GameObject MeleePrefab;
 
-    // Update is called once per frame
-    void Update()
+    public float ProjectileDamage;
+
+    public void ProjectileAttack()
     {
-        
+        GameObject projectile = Instantiate(ProjectilePrefab, transform.position, new Quaternion());
+        projectile.GetComponent<ProjectileController>().Initiate(
+            3, 
+            gameObject.GetComponent<CharacterMovement>().Direction, 
+            1,
+            gameObject.tag == "Player");
     }
 }

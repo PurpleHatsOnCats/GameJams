@@ -14,9 +14,9 @@ public class ProjectileController : MonoBehaviour
     /// <param name="direction"></param>
     /// <param name="damage"></param>
     /// <param name="playerFriendly"></param>
-    public void Initiated(float speed, Vector2 direction, float damage, bool playerFriendly)
+    public void Initiate(float speed, FaceDirection direction, float damage, bool playerFriendly)
     {
-        GetComponent<Rigidbody2D>().velocity = speed * direction;
+        GetComponent<Rigidbody2D>().velocity = speed * GameDictionary.moveDirections[direction];
         this.damage = damage;
         this.playerFriendly = playerFriendly;
     }

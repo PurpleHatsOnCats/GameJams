@@ -5,9 +5,12 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public float MoveSpeed;
+    public FaceDirection Direction;
 
-    public void Move(Vector2 direction)
+    public void Move(FaceDirection direction)
     {
-        GetComponent<Rigidbody2D>().velocity = direction * MoveSpeed;
+        GetComponent<Rigidbody2D>().velocity = GameDictionary.moveDirections[direction] * MoveSpeed;
+        Direction = direction;
     }
 }
+
