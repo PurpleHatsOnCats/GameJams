@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class TimerController : MonoBehaviour
             timer = 0;
         }
 
+
         //changes the sprite of clock acording to time passed
         switch (timeOfDay){
             case 1:
@@ -62,6 +64,9 @@ public class TimerController : MonoBehaviour
                 break;
             case 6:
                 timerSprite.sprite = sprites[5];
+                //you win
+                SceneManager.LoadScene("Level_3");
+
                 break;
         }
 

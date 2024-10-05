@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class PlayerHealth : MonoBehaviour
     private bool isHiding = false;
 
     private SpriteRenderer childSprite;
+
+    [SerializeField]
+    private List<GameObject> devices;
+    private int deviceToDelete = 0;
 
     [SerializeField]
     private List<GameObject> energyBarObject;
@@ -21,15 +26,6 @@ public class PlayerHealth : MonoBehaviour
     public bool IsHiding
     {
         get { return isHiding; }
-    }
-
-    /// <summary>
-    /// checks the health of the child and allows it to be altered
-    /// </summary>
-    public int Health
-    {
-        get { return health; }
-        set { health = value; }
     }
 
     void Awake()
@@ -59,8 +55,23 @@ public class PlayerHealth : MonoBehaviour
             isHiding = false;
         }
 
+        //if you lose the scene restarts
+        if(health == 0)
+        {
+            SceneManager.LoadScene("Level_2");
+        }
 
 
+    }
+
+    /// <summary>
+    /// mommy successfully snatches a device
+    /// </summary>
+    public void DeviceTaken()
+    {
+        health--;
+        Destroy(devices[deviceToDelete]);
+        deviceToDelete++;
 
     }
 
