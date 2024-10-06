@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuddleController : MonoBehaviour
 {
@@ -10,9 +11,13 @@ public class PuddleController : MonoBehaviour
 
     //fields
     //variables to determine the kind of puddles there are.
-    string waterPuddle = "waterTile";
-    string lavaPuddle = "lavaTile";
+    public enum PuddleType
+    {
+        fire,
+        water
+    }
 
+    private PuddleType puddleType;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +35,16 @@ public class PuddleController : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         //determine if the collision is with the right player.
+        if(collision.gameObject.tag == "Player" && puddleType == PuddleType.water)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Level_3");
+        }
+        if(collision.gameObject.tag == "Girlfriend" && puddleType == PuddleType.fire)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Level_3");
+        }
+
     }
 }
