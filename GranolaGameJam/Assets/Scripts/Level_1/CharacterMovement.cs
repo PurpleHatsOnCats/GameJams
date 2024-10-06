@@ -11,10 +11,10 @@ public class CharacterMovement : MonoBehaviour
 
     private Animator _animator;
     private Vector2 _lastVelocity;
-    [HideInInspector]
+    
     public float StunTime;
-    private float _stunDistanceLeft;
-    private Vector2 _lastPosition;
+    public float _stunDistanceLeft;
+    public Vector2 _lastPosition;
 
     public void Start()
     {
@@ -49,8 +49,6 @@ public class CharacterMovement : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = color;
             }
             
-
-            
             if (_stunDistanceLeft > 0)
             {
                 _stunDistanceLeft -= (_lastPosition - (Vector2)transform.position).magnitude;
@@ -79,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void Move(FaceDirection direction)
     {
-        if (!Frozen)
+        if (!Frozen && (gameObject.tag == "Player" || _stunDistanceLeft <= 0) )
         {
             if (direction != FaceDirection.Stop)
             {
@@ -94,6 +92,10 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
             GetComponent<Rigidbody2D>().velocity = GameDictionary.moveDirections[direction] * MoveSpeed;
+            if (_animator != null)
+            {
+                _animator.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
+            }
         }
     }
     /// <summary>
@@ -119,9 +121,11 @@ public class CharacterMovement : MonoBehaviour
     }
     public void RecieveKnockback(Vector2 velocity, float distance, float time)
     {
+        Debug.Log("Knockback recieved: " + velocity);
         GetComponent<Rigidbody2D>().velocity = velocity;
         StunTime = time;
         _stunDistanceLeft = distance;
+        _lastPosition = transform.position;
     }
 }
 

@@ -10,26 +10,29 @@ public class EnemyController : MonoBehaviour
 
     public UnityEvent Attack;
     public DirectionEvent Move;
+    
+    private CharacterMovement moveScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveScript = GetComponent<CharacterMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CharacterMovement moveScript = GetComponent<CharacterMovement>();
-        
         if(moveScript.StunTime == 0 && !GetComponent<CharacterMovement>().Frozen)
         {
+            FaceDirection direction = FaceDirection.Stop;
+            float xDistance = Mathf.Abs(Target.transform.position.x - transform.position.x);
+            float yDistance = Mathf.Abs(Target.transform.position.y - transform.position.y);
+            CharacterAttack attackScript = GetComponent<CharacterAttack>();
+
             switch (Type)
             {
                 case EnemyType.Melee:
-                    FaceDirection direction = FaceDirection.Stop;
-                    float xDistance = Mathf.Abs(Target.transform.position.x - transform.position.x);
-                    float yDistance = Mathf.Abs(Target.transform.position.y - transform.position.y);
+                    
                     if ((xDistance < yDistance || yDistance < 0.4f) && xDistance > 0.4f)
                     {
                         // Move X
@@ -61,6 +64,71 @@ public class EnemyController : MonoBehaviour
                     moveScript.Move(direction);
                     break;
                 case EnemyType.Ranged:
+                    // Shoot Segment
+                    if((xDistance < 1 || yDistance < 1) && attackScript.Cooldown == 0)
+                    {
+                        // Choose Direction
+                        if(xDistance > yDistance)
+                        {
+                            if(Target.transform.position.x > transform.position.x)
+                        {
+                                direction = FaceDirection.Right;
+                            }
+                            else
+                            {
+                                direction = FaceDirection.Left;
+                            }
+                        }
+                        else
+                        {
+                            if (Target.transform.position.y > transform.position.y)
+                            {
+                                direction = FaceDirection.Up;
+                            }
+                            else
+                            {
+                                direction = FaceDirection.Down;
+                            }
+                        }
+                        // Shoot
+                        GetComponent<CharacterMovement>().Direction = direction;
+                        attackScript.ProjectileAttack();
+                        
+                    }
+                    // Move Segment
+                    else
+                    {
+                        if ((xDistance < yDistance))
+                        {
+                            // Move X
+                            if (Target.transform.position.x > transform.position.x)
+                            {
+                                direction = FaceDirection.Right;
+                            }
+                            else
+                            {
+                                direction = FaceDirection.Left;
+                            }
+                        }
+                        else if (yDistance > 0.4f)
+                        {
+                            // Move Y
+                            if (Target.transform.position.y > transform.position.y)
+                            {
+                                direction = FaceDirection.Up;
+                            }
+                            else
+                            {
+                                direction = FaceDirection.Down;
+                            }
+                        }
+                        else
+                        {
+                            direction = FaceDirection.Stop;
+                        }
+                        moveScript.Move(direction);
+                    }
+                    
                     break;
                 case EnemyType.Boss:
                     break;

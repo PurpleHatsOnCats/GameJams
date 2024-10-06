@@ -108,6 +108,8 @@ MonoBehaviour:
   Direction: 4
   Frozen: 1
   StunTime: 0
+  _stunDistanceLeft: 0
+  _lastPosition: {x: 0, y: 0}
 --- !u!114 &2193358606459621844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804de75c074502c4ea5dfe8335e316bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 6
 --- !u!114 &1981579582186885739
 MonoBehaviour:
   m_ObjectHideFlags: 0

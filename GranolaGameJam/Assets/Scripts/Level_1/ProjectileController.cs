@@ -76,7 +76,7 @@ public class ProjectileController : MonoBehaviour
                 if(Knockback != 0)
                 {
                     collision.gameObject.GetComponent<CharacterMovement>().RecieveKnockback(
-                        GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*4, 
+                        GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*5, 
                         Knockback, 
                         1f);
                 }

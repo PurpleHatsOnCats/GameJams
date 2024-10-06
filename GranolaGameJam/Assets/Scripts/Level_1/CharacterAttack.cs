@@ -99,7 +99,7 @@ public class CharacterAttack : MonoBehaviour
             _projectiles.Add(meleeObject);
             meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
             ProjectileController pController = meleeObject.GetComponent<ProjectileController>();
-            pController.Knockback = 4f;
+            pController.Knockback = 1.5f;
             pController.Initiate(
                 MeleeSpeed,
                 gameObject.GetComponent<CharacterMovement>().Direction,
