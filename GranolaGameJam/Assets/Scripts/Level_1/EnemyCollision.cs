@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyCollision : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class EnemyCollision : MonoBehaviour
     /// Destroys object and damages character when collided 
     /// </summary>
     /// <param name="collision"></param>
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollision2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && GetComponent<CharacterMovement>().StunTime == 0)
         {
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(PhysicalDamage);
         }

@@ -98,15 +98,17 @@ public class CharacterAttack : MonoBehaviour
                 transform.position + (Vector3)direction * 0.1f,
                 Quaternion.AngleAxis(90 + 180 / 3.1416f * Mathf.Atan2(direction.y,direction.x),Vector3.forward));
             meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
-            meleeObject.GetComponent<ProjectileController>().Initiate(
+            ProjectileController pController = meleeObject.GetComponent<ProjectileController>();
+            pController.Initiate(
                 MeleeSpeed,
                 gameObject.GetComponent<CharacterMovement>().Direction,
                 MeleeDamage,
                 MeleeDistance,
                 gameObject.tag == "Player");
 
-            meleeObject.GetComponent<ProjectileController>().FadeAway = gameObject.tag == "Player";
-            
+            pController.FadeAway = gameObject.tag == "Player";
+            pController.Knockback = 4f;
+
 
             // Set Cooldown
             AttackCooldown = Cooldown;

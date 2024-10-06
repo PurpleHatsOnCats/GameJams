@@ -11,6 +11,7 @@ public class ProjectileController : MonoBehaviour
     [HideInInspector]
     public float MaxDistance;
     public bool FadeAway = false;
+    public float Knockback = 0;
 
     private float _distanceTraveled;
     private Vector2 _lastPosition;
@@ -66,9 +67,19 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && PlayerFriendly)
         {
-            Debug.Log("Hit enemy, damage: " + Damage);
-            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
-            Destroy(gameObject);
+            if(gameObject.GetComponent<CharacterMovement>().StunTime == 0)
+            {
+                Debug.Log("Hit enemy, damage: " + Damage);
+                collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
+                if(Knockback != 0)
+                {
+                    collision.gameObject.GetComponent<CharacterMovement>().RecieveKnockback(
+                        GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*4, 
+                        Knockback, 
+                        1f);
+                }
+                Destroy(gameObject);
+            }
         }
         else if (collision.gameObject.tag == "Player" && !PlayerFriendly)
         {

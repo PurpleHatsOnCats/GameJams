@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterHealth : MonoBehaviour
 {
     public float Health;
+
+    private float _redTimer;
     private float P_Health
     {
         get
@@ -29,6 +31,20 @@ public class CharacterHealth : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if(_redTimer > 0)
+        {
+            _redTimer -= Time.deltaTime;
+        }
+        else if(_redTimer < 0)
+        {
+            _redTimer = 0;
+            Color color = GetComponent<SpriteRenderer>().color;
+            color = new Color(1, 1, 1);
+            GetComponent<SpriteRenderer>().color = color;
+        }
+    }
     /// <summary>
     /// Decreases health by a specified amount
     /// </summary>
@@ -36,5 +52,16 @@ public class CharacterHealth : MonoBehaviour
     public void TakeDamage(float amount)
     {
         P_Health -= amount;
+        if(gameObject.tag == "Player")
+        {
+            GetComponent<CharacterMovement>().StunTime = 1f;
+        }
+        else
+        {
+            _redTimer = 0.3f;
+            Color color = GetComponent<SpriteRenderer>().color;
+            color = new Color(1, 0.7f, 0.7f);
+            GetComponent<SpriteRenderer>().color = color;
+        }
     }
 }
