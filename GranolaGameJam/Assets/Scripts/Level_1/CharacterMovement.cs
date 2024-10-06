@@ -15,10 +15,6 @@ public class CharacterMovement : MonoBehaviour
     public void Start()
     {
         _animator = GetComponent<Animator>();
-        if(_animator == null)
-        {
-            Debug.Log("Could not find Animator");
-        }
     }
 
     public void Move(FaceDirection direction)
