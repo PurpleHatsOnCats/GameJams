@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     //information for jumping
     Vector3 leapDirection = new Vector3(0, 0, 0);
-    float jumpForce = 30f;
+    float jumpForce = 200f;
 
     float speed = 3f;
 
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 jumpVect = Vector2.up * jumpForce;
             rBody.AddForce(jumpVect);
-            Jump();
+            hasJump = false;
         }
         //velocity
         Vector3 velocity = playerDirection * speed;
