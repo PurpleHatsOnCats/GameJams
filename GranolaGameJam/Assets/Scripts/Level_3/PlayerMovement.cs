@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement_3 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     //information for jumping
@@ -12,12 +12,19 @@ public class PlayerMovement_3 : MonoBehaviour
 
     float speed = 3f;
 
-    bool hasJump;
+    public bool hasJump;
+
+    //Animation
+    private Animator animator;
+
+    private Rigidbody2D rBody;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
+        rBody = GetComponent<Rigidbody2D>();
+        hasJump  = true;
     }
 
     // Update is called once per frame
@@ -32,29 +39,49 @@ public class PlayerMovement_3 : MonoBehaviour
     public void SideMovements()
     {
         //position and direction
-        Vector3 playerPosition = gameObject.transform.position;
         Vector3 playerDirection = Vector3.zero;
 
         //Right movement
         if (Input.GetKey(KeyCode.D))
         {
             //change direction
-            playerDirection = new Vector3(1, 0, 0);
+            animator.SetBool("WalkRight", true);
 
+            //player moves right
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 2 *Time.deltaTime
+                , gameObject.transform.position.y);
+        }
+        else
+        {
+            animator.SetBool("WalkRight", false);
         }
         //left movement
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            playerDirection = new Vector3(-1, 0, 0);
+            //change direction
+            animator.SetBool("WalkLeft", true);
+
+            //player moves right
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2 * Time.deltaTime
+                , gameObject.transform.position.y);
+        }
+        else
+        {
+            animator.SetBool("WalkLeft", false);
+
         }
 
+
+        if (Input.GetKey(KeyCode.W) && hasJump)
+        {
+            Vector2 jumpVect = Vector2.up * jumpForce;
+            rBody.AddForce(jumpVect);
+            hasJump = false;
+        }
         //velocity
         Vector3 velocity = playerDirection * speed;
         velocity *= Time.deltaTime;
-        playerPosition += velocity;
 
-        //set to character
-        gameObject.transform.position = playerPosition;
     }
 
 

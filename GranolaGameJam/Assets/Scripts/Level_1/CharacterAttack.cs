@@ -16,7 +16,12 @@ public class CharacterAttack : MonoBehaviour
 
     private GameObject[] _projectiles;
     private float AttackCooldown;
+    private Animator _animator;
 
+    public void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         if(AttackCooldown > 0)
@@ -56,6 +61,11 @@ public class CharacterAttack : MonoBehaviour
 
             // Set Cooldown
             AttackCooldown = Cooldown;
+
+            if (_animator != null)
+            {
+                _animator.SetTrigger("TrAttack");
+            }  
         }
     }
     /// <summary>
@@ -80,6 +90,11 @@ public class CharacterAttack : MonoBehaviour
 
             // Set Cooldown
             AttackCooldown = Cooldown;
+
+            if (_animator != null)
+            {
+                _animator.SetTrigger("TrAttack");
+            }
         }
     }
     /// <summary>

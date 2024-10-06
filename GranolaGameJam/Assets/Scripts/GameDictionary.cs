@@ -17,11 +17,11 @@ public static class GameDictionary
 }
 public enum FaceDirection
 {
-    Right,
-    Up,
-    Left,
-    Down,
-    Stop
+    Right = 1,
+    Up = 2,
+    Left = 3,
+    Down = 4,
+    Stop = 0
 }
 [Serializable]
 public class IntEvent : UnityEvent<int>
