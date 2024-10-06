@@ -17,7 +17,8 @@ public class CharacterAttack : MonoBehaviour
     public float MeleeDistance = 2;
 
     private List<GameObject> _projectiles = new List<GameObject>(5);
-    private float AttackCooldown;
+    [HideInInspector]
+    public float AttackCooldown;
     private float _moveCooldown;
     private Animator _animator;
 

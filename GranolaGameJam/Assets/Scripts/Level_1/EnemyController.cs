@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
                     break;
                 case EnemyType.Ranged:
                     // Shoot Segment
-                    if((xDistance < 1 || yDistance < 1) && attackScript.Cooldown == 0)
+                    if((xDistance < 1.5 || yDistance < 1.5) && attackScript.AttackCooldown == 0)
                     {
                         // Choose Direction
                         if(xDistance > yDistance)
@@ -98,7 +98,7 @@ public class EnemyController : MonoBehaviour
                     // Move Segment
                     else
                     {
-                        if ((xDistance < yDistance))
+                        if ((xDistance < yDistance) && xDistance > 0.4f)
                         {
                             // Move X
                             if (Target.transform.position.x > transform.position.x)
