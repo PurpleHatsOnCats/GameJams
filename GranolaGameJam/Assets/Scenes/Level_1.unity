@@ -1184,6 +1184,22 @@ PrefabInstance:
       propertyPath: Direction
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2942518955632137027, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4271219
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942518955632137027, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: m_Size.y
+      value: 0.47375178
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942518955632137027, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.000000044703484
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942518955632137027, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.14988077
+      objectReference: {fileID: 0}
     - target: {fileID: 5544379667658325760, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.06
