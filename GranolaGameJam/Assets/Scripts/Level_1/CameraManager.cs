@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour
     public void Start()
     {
         transform.position = (CurrentArea * LevelSize) - UIOffset;
+        TargetPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -26,22 +27,22 @@ public class CameraManager : MonoBehaviour
         if (Player.transform.position.x > LevelSize.x * (CurrentArea.x + 0.5))
         {
             CurrentArea.x++;
-            TargetPosition = (CurrentArea * LevelSize) - UIOffset;
+            TargetPosition = (CurrentArea * LevelSize) - UIOffset/2;
         }
         else if (Player.transform.position.y > LevelSize.y * (CurrentArea.y + 0.5))
         {
             CurrentArea.y++;
-            TargetPosition = (CurrentArea * LevelSize) - UIOffset;
+            TargetPosition = (CurrentArea * LevelSize) - UIOffset/2;
         }
         else if (Player.transform.position.x < LevelSize.x * (CurrentArea.x - 0.5))
         {
             CurrentArea.x--;
-            TargetPosition = (CurrentArea * LevelSize) - UIOffset;
+            TargetPosition = (CurrentArea * LevelSize) - UIOffset/2;
         }
         else if (Player.transform.position.y < LevelSize.y * (CurrentArea.y - 0.5))
         {
             CurrentArea.y--;
-            TargetPosition = (CurrentArea * LevelSize) - UIOffset;
+            TargetPosition = (CurrentArea * LevelSize) - UIOffset/2;
         }
 
         // Move camera if necessary
