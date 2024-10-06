@@ -22,6 +22,12 @@ public class SceneTransition : MonoBehaviour
         {
             SceneManager.LoadScene($"Level_{levelToLoad}");
 
+            levelToLoad += 3;
+
+            if (levelToLoad >= 9) 
+            {
+                levelToLoad = 3;
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ public class ProjectileController : MonoBehaviour
     public bool PlayerFriendly;
     [HideInInspector]
     public float MaxDistance;
+    public bool FadeAway = false;
 
     private float _distanceTraveled;
     private Vector2 _lastPosition;
@@ -19,9 +20,15 @@ public class ProjectileController : MonoBehaviour
         Vector2 currentPosition = transform.position;
         _distanceTraveled += (currentPosition - _lastPosition).magnitude;
 
-        if(_distanceTraveled > MaxDistance) // NOTE: this does not extrapolate, so it can technically go beyond the max distance
+        if (_distanceTraveled > MaxDistance) // NOTE: this does not extrapolate, so it can technically go beyond the max distance
         {
             Destroy(gameObject);
+        }
+        else if (FadeAway)
+        {
+            Color color = GetComponent<SpriteRenderer>().color;
+            color.a = 1-(_distanceTraveled / MaxDistance);
+            GetComponent<SpriteRenderer>().color = color;
         }
 
         _lastPosition = transform.position;
@@ -43,7 +50,6 @@ public class ProjectileController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
-        
 
         Damage = damage;
         PlayerFriendly = playerFriendly;

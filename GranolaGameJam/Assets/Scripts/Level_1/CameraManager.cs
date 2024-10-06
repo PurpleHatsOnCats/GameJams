@@ -16,7 +16,9 @@ public class CameraManager : MonoBehaviour
 
     public void Start()
     {
-        transform.position = (CurrentArea * LevelSize) - UIOffset;
+        Vector3 startPosition = (Vector3)((CurrentArea * LevelSize) - UIOffset);
+        startPosition.z = transform.position.z;
+        transform.position = startPosition;
         TargetPosition = transform.position;
     }
 

@@ -106,19 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -137,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 818013cdc864e334383ce1a345504823
-      internalID: -1133091153
+      spriteID: 8ee4b30d5f4d2ca448f1daf568451442
+      internalID: -849093505
       vertices: []
       indices: 
       edges: []
@@ -158,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b2ea86f4b9e1894c8e53d0fbed15d22
-      internalID: 1966295899
+      spriteID: 83bf639c92e02904083c433b5f7b1335
+      internalID: 757579372
       vertices: []
       indices: 
       edges: []
@@ -179,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7affa98369071749a13d4ad35e3c56f
-      internalID: -1982722415
+      spriteID: 19daaacbdaab3364b8cce335dcbd1422
+      internalID: 1458993330
       vertices: []
       indices: 
       edges: []
@@ -200,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e32608f9b4ce724f9f7cc8830df9518
-      internalID: -728826010
+      spriteID: 7fe09f9adfbacd045a5d6512650c0bed
+      internalID: 1882616265
       vertices: []
       indices: 
       edges: []
@@ -217,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Level1_Character_AttackLeft_0: -1133091153
-      Level1_Character_AttackLeft_1: 1966295899
-      Level1_Character_AttackLeft_2: -1982722415
-      Level1_Character_AttackLeft_3: -728826010
+      Level1_Character_AttackLeft_0: -849093505
+      Level1_Character_AttackLeft_1: 757579372
+      Level1_Character_AttackLeft_2: 1458993330
+      Level1_Character_AttackLeft_3: 1882616265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

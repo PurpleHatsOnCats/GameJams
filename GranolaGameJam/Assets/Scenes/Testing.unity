@@ -122,6 +122,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &53718957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5099911882108066874, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+  m_PrefabInstance: {fileID: 9220326562067438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &53718967
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53718957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86ebe6dcf6b6fd548b705449eb20fd36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &215915050
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 492713137}
   LevelSize: {x: 16, y: 9}
-  UIOffset: {x: 0, y: -0.5}
+  UIOffset: {x: 0, y: 0}
   CameraSpeed: 30
   enemies: []
 --- !u!1 &351987129
@@ -793,10 +819,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRanged
       objectReference: {fileID: 0}
+    - target: {fileID: 6654825538567063202, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654825538567063202, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: ProjectileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9860799cec0dbb4a8847f3713de0670, type: 3}
+    - target: {fileID: 8903343535663023299, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903343535663023299, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971919318160708403, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2034016938, guid: b9ecadcd24b5eb44f9877250c2a5c465, type: 3}
+    - target: {fileID: 8971919318160708403, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971919318160708403, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971919318160708403, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5099911882108066874, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 53718967}
   m_SourcePrefab: {fileID: 100100000, guid: 7500bbb11aa20d94bbf43c5257887eb3, type: 3}
 --- !u!1001 &416864024463441662
 PrefabInstance:
@@ -806,9 +867,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1887634357925279228, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: MeleeSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887634357925279228, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: MeleeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a103d1b4ad99255489cc228451fa7317, type: 3}
+    - target: {fileID: 1887634357925279228, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: MeleeDistance
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2520604250561029558, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874371599113062952, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
+      propertyPath: Direction
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5544379667658325760, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
       propertyPath: m_LocalPosition.x
@@ -906,6 +983,22 @@ PrefabInstance:
     - target: {fileID: 3827237412816468182, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035773311578893639, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2161a8036dfd28849922de04070ebb63, type: 3}
+    - target: {fileID: 5035773311578893639, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035773311578893639, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035773311578893639, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
