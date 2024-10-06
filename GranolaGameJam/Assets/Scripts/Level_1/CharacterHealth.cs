@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CharacterHealth : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class CharacterHealth : MonoBehaviour
 
                 if (gameObject.tag == "Player")
                 {
-                    // TODO: restart level
+                    SceneManager.LoadScene("Level_1");
                 }
                 else
                 {

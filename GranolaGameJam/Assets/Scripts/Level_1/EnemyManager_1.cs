@@ -6,6 +6,11 @@ public class EnemyManager_1 : MonoBehaviour
 {
     public List<GameObject> enemies = new List<GameObject>();
 
+    public void Start()
+    {
+
+    }
+
     public void FreezeAll()
     {
         for(int i = 0; i < enemies.Count; i++)

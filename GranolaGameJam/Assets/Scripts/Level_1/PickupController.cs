@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,6 +20,15 @@ public class PickupController : MonoBehaviour
         Vector2 playerPosition = Player.transform.position;
         Vector2 itemPosition = transform.position;
         InRange = (playerPosition - itemPosition).magnitude <= PickupRange;
+        if (InRange)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1,1,1);
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
+        }
+        
     }
     public void AttemptPickup()
     {
