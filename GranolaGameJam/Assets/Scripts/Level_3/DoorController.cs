@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
     {
         if (playerDoorEntered && otherDoor.GirlfriendDoorEntered)
         {
-            SceneManager.LoadScene("cutscene2");
+            SceneManager.LoadScene("cutscene_Final");
         }
     }
 
