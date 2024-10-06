@@ -14,6 +14,11 @@ public class CameraManager : MonoBehaviour
     private Vector2 CurrentArea = new Vector2(0, 0);
     private Vector2 TargetPosition = new Vector2(0,0);
 
+    public void Start()
+    {
+        transform.position = (Vector3)((CurrentArea * LevelSize) - UIOffset);
+    }
+
     // Update is called once per frame
     void Update()
     {
