@@ -1,28 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class DoorController : MonoBehaviour
+public class GirlfriendDoorController : MonoBehaviour
 {
-    private bool playerDoorEntered = false;
+    private bool girlfriendDoorEntered = false;
 
-    [SerializeField]
-    private GirlfriendDoorController otherDoor;
+    public bool GirlfriendDoorEntered
+    {
+        get { return girlfriendDoorEntered; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerDoorEntered && otherDoor.GirlfriendDoorEntered)
-        {
-            SceneManager.LoadScene("cutscene2");
-        }
+
     }
 
     /// <summary>
@@ -31,11 +29,11 @@ public class DoorController : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            playerDoorEntered = true;
-        }
 
+        if (other.gameObject.tag == "Girlfriend")
+        {
+            girlfriendDoorEntered = true;
+        }
     }
 
     /// <summary>
@@ -44,11 +42,9 @@ public class DoorController : MonoBehaviour
     /// <param name="collision"></param>
     public void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Girlfriend")
         {
-            playerDoorEntered = false;
+            girlfriendDoorEntered = false;
         }
-
     }
-
 }

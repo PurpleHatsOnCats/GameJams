@@ -10,12 +10,14 @@ public class CharacterAttack : MonoBehaviour
     public float MeleeDamage = 2;
     public float ProjectileSpeed = 10;
     public float MeleeSpeed = 6;
-    public float Cooldown = 0.7f;
+    public float Cooldown = 1f;
+    public float StopTime = 0.3f;
     public float ProjectileDistance = 8;
     public float MeleeDistance = 2;
 
     private GameObject[] _projectiles;
     private float AttackCooldown;
+    private float _moveCooldown;
     private Animator _animator;
 
     public void Start()
@@ -24,14 +26,22 @@ public class CharacterAttack : MonoBehaviour
     }
     private void Update()
     {
-        if(AttackCooldown > 0)
+        if (_moveCooldown > 0)
         {
-            AttackCooldown -= Time.deltaTime;
+            _moveCooldown -= Time.deltaTime;
             GetComponent<CharacterMovement>().FreezeMovement(true);
-            if (AttackCooldown <= 0)
+            if (_moveCooldown <= 0)
             {
                 GetComponent<CharacterMovement>().FreezeMovement(false);
             }
+        }
+        if (_moveCooldown < 0)
+        {
+            _moveCooldown = 0;
+        }
+        if (AttackCooldown > 0)
+        {
+            AttackCooldown -= Time.deltaTime;
         }
         if(AttackCooldown < 0)
         {
@@ -61,6 +71,7 @@ public class CharacterAttack : MonoBehaviour
 
             // Set Cooldown
             AttackCooldown = Cooldown;
+            _moveCooldown = StopTime;
 
             if (_animator != null)
             {
@@ -90,6 +101,7 @@ public class CharacterAttack : MonoBehaviour
 
             // Set Cooldown
             AttackCooldown = Cooldown;
+            _moveCooldown = StopTime;
 
             if (_animator != null)
             {

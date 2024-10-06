@@ -15,10 +15,6 @@ public class CharacterMovement : MonoBehaviour
     public void Start()
     {
         _animator = GetComponent<Animator>();
-        if(_animator == null)
-        {
-            Debug.Log("Could not find Animator");
-        }
     }
 
     public void Move(FaceDirection direction)
@@ -28,15 +24,21 @@ public class CharacterMovement : MonoBehaviour
             if (direction != FaceDirection.Stop)
             {
                 Direction = direction;
+                GetComponent<SpriteRenderer>().flipX = direction == FaceDirection.Right;
+                
                 if (_animator != null)
                 {
-                    _animator.SetInteger("Direction", (int)direction);
+                    _animator.SetFloat("XInput", GameDictionary.moveDirections[direction].x);
+                    _animator.SetFloat("YInput", GameDictionary.moveDirections[direction].y);
                     _animator.SetTrigger("TrWalk");
                 }
             }
             GetComponent<Rigidbody2D>().velocity = GameDictionary.moveDirections[direction] * MoveSpeed;
         }
-        
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
+        }
     }
     /// <summary>
     /// Freezes movement
