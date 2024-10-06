@@ -5,8 +5,13 @@ using UnityEngine;
 public class TriggerReciever : MonoBehaviour
 {
     [SerializeField]
-    private GameObject correspondingPuddle;
+    private GameObject puddleCover;
 
+    [SerializeField]
+    private float yPosition;
+
+    [SerializeField]
+    private GameObject correspondingPuddle;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +26,10 @@ public class TriggerReciever : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(correspondingPuddle != null)
-        {
-            correspondingPuddle.transform.position = new Vector3
-                (correspondingPuddle.transform.position.x, correspondingPuddle.transform.position.y - 2);
-            Destroy(correspondingPuddle, 1);
-        }
+         puddleCover.transform.position = new Vector3
+            (puddleCover.transform.position.x, yPosition);
+
+        Destroy(correspondingPuddle);
 
     }
 
