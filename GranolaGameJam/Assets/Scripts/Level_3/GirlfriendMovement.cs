@@ -8,7 +8,7 @@ public class GirlfriendMovement : MonoBehaviour
 
     //information for jumping
     Vector3 leapDirection = new Vector3(0, 0, 0);
-    float jumpForce = 200f;
+    float jumpForce = 350f;
 
     float speed = 3f;
 
@@ -61,9 +61,9 @@ public class GirlfriendMovement : MonoBehaviour
             //change direction
             animator.SetBool("WalkLeft", true);
 
-            //player moves right
+            //player moves left
             gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2 * Time.deltaTime
-                , gameObject.transform.position.y);
+                , gameObject.transform.position.y, -1);
         }
         else
         {
