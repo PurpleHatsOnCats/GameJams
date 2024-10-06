@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,9 +9,9 @@ public class PickupController : MonoBehaviour
     public int ItemID;
     public float PickupRange;
     public GameObject Player;
-    [HideInInspector]
     public bool InRange;
     public IntEvent ItemPickup;
+    public UnityEvent Collected;
 
     // Update is called once per frame
     void Update()
@@ -24,6 +25,8 @@ public class PickupController : MonoBehaviour
         if (InRange)
         {
             ItemPickup.Invoke(ItemID);
+            Collected.Invoke();
+            Destroy(gameObject);
         }
     }
 }

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 leapDirection = new Vector3(0, 0, 0);
     float jumpForce = 350f;
 
-    float speed = 3f;
+    float speed = 4f;
 
     public bool hasJump;
 

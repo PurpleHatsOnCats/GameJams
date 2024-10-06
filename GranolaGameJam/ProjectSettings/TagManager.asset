@@ -9,6 +9,7 @@ TagManager:
   - Girlfriend
   - Water
   - Fire
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterHealth : MonoBehaviour
 {
     public float Health;
+    public UnityEvent Defeated;
 
     private float _redTimer;
     public float P_Health
@@ -26,8 +28,14 @@ public class CharacterHealth : MonoBehaviour
                 }
                 else
                 {
+                    Defeated.Invoke();
+                    GetComponent<CharacterAttack>().DestroyProjectiles();
                     Destroy(gameObject);
                 }
+            }
+            if(Health > 3)
+            {
+                Health = 3;
             }
         }
     }
@@ -63,5 +71,9 @@ public class CharacterHealth : MonoBehaviour
         color = new Color(1, 0.7f, 0.7f);
         GetComponent<SpriteRenderer>().color = color;
         
+    }
+    public void Heal(float amount)
+    {
+        P_Health += amount;
     }
 }

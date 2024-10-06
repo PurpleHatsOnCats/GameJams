@@ -109,7 +109,10 @@ public class CharacterMovement : MonoBehaviour
             Frozen = frozen;
             if (Frozen)
             {
-                _lastVelocity = GetComponent<Rigidbody2D>().velocity;
+                if(GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+                {
+                    _lastVelocity = GetComponent<Rigidbody2D>().velocity;
+                }
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
             else
