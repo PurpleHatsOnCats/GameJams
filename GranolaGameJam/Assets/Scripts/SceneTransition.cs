@@ -22,11 +22,11 @@ public class SceneTransition : MonoBehaviour
         {
             SceneManager.LoadScene($"Level_{levelToLoad}");
 
-            counter += 3;
+            levelToLoad += 3;
 
-            if (counter >= 9) 
+            if (levelToLoad >= 9) 
             {
-                counter = 3;
+                levelToLoad = 3;
             }
         }
     }
