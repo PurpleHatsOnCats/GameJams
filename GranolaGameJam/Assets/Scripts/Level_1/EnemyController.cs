@@ -11,8 +11,6 @@ public class EnemyController : MonoBehaviour
     public UnityEvent Attack;
     public DirectionEvent Move;
 
-    private bool _frozen;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +22,7 @@ public class EnemyController : MonoBehaviour
     {
         CharacterMovement moveScript = GetComponent<CharacterMovement>();
         
-        if(moveScript.StunTime == 0)
+        if(moveScript.StunTime == 0 && !GetComponent<CharacterMovement>().Frozen)
         {
             switch (Type)
             {
@@ -32,7 +30,7 @@ public class EnemyController : MonoBehaviour
                     FaceDirection direction = FaceDirection.Stop;
                     float xDistance = Mathf.Abs(Target.transform.position.x - transform.position.x);
                     float yDistance = Mathf.Abs(Target.transform.position.y - transform.position.y);
-                    if ((xDistance < yDistance || yDistance > 0.4f) && xDistance > 0.4f)
+                    if ((xDistance < yDistance || yDistance < 0.4f) && xDistance > 0.4f)
                     {
                         // Move X
                         if(Target.transform.position.x > transform.position.x)

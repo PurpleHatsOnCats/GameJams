@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraManager : MonoBehaviour
 {
@@ -9,9 +10,14 @@ public class CameraManager : MonoBehaviour
     public Vector2 LevelSize = new Vector2(16, 9);
     public Vector2 UIOffset = new Vector2(0,-0.5f);
     public float CameraSpeed = 30;
-    public GameObject[] enemies;
 
-    private Vector2 CurrentArea = new Vector2(0, 0);
+    public UnityEvent CameraStartMove;
+    public UnityEvent CameraStopMove;
+
+    [HideInInspector]
+    public bool Moving = false;
+    [HideInInspector]
+    public Vector2 CurrentArea = new Vector2(0, 0);
     private Vector2 TargetPosition = new Vector2(0,0);
 
     public void Start()
@@ -51,10 +57,20 @@ public class CameraManager : MonoBehaviour
         Vector2 moveVector = TargetPosition - (Vector2)transform.position;
         if ((moveVector).magnitude > CameraSpeed * Time.deltaTime)
         {
+            if(Moving == false)
+            {
+                CameraStartMove.Invoke();
+            }
+            Moving = true;
             transform.position += (Vector3)moveVector.normalized * CameraSpeed * Time.deltaTime;
         }
         else
         {
+            if(Moving == true)
+            {
+                CameraStopMove.Invoke();
+            }
+            Moving = false;
             transform.position += (Vector3)moveVector;
         }
     }

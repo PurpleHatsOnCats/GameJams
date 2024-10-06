@@ -28,7 +28,7 @@ public class ProjectileController : MonoBehaviour
         else if (FadeAway)
         {
             Color color = GetComponent<SpriteRenderer>().color;
-            color.a = 1-(_distanceTraveled / MaxDistance);
+            color.a = 1-Mathf.Pow(_distanceTraveled / MaxDistance,2);
             GetComponent<SpriteRenderer>().color = color;
         }
 
@@ -44,10 +44,12 @@ public class ProjectileController : MonoBehaviour
     /// <param name="playerFriendly"></param>
     public void Initiate(float speed, FaceDirection direction, float damage, float distance, bool playerFriendly)
     {
-        gameObject.GetComponent<CharacterMovement>().MoveSpeed = speed;
-        gameObject.GetComponent<CharacterMovement>().Move(direction);
+        CharacterMovement moveScript = gameObject.GetComponent<CharacterMovement>();
+        moveScript.MoveSpeed = speed;
+        moveScript.Move(direction);
+        moveScript.Direction = direction;
 
-        if(direction == FaceDirection.Left)
+        if (direction == FaceDirection.Left)
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -67,7 +69,7 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && PlayerFriendly)
         {
-            if(gameObject.GetComponent<CharacterMovement>().StunTime == 0)
+            if(collision.gameObject.GetComponent<CharacterMovement>().StunTime == 0)
             {
                 Debug.Log("Hit enemy, damage: " + Damage);
                 collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);

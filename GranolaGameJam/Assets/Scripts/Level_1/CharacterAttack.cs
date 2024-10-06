@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CharacterAttack : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class CharacterAttack : MonoBehaviour
     public float ProjectileDistance = 8;
     public float MeleeDistance = 2;
 
-    private GameObject[] _projectiles;
+    private List<GameObject> _projectiles = new List<GameObject>(5);
     private float AttackCooldown;
     private float _moveCooldown;
     private Animator _animator;
@@ -33,14 +34,10 @@ public class CharacterAttack : MonoBehaviour
         if (_moveCooldown > 0)
         {
             _moveCooldown -= Time.deltaTime;
-            GetComponent<CharacterMovement>().FreezeMovement(true);
-            if (_moveCooldown <= 0)
-            {
-                GetComponent<CharacterMovement>().FreezeMovement(false);
-            }
         }
         if (_moveCooldown < 0)
         {
+            GetComponent<CharacterMovement>().Freeze(false);
             _moveCooldown = 0;
         }
         if (AttackCooldown > 0)
@@ -65,6 +62,7 @@ public class CharacterAttack : MonoBehaviour
                 ProjectilePrefab, 
                 transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*0.2f, 
                 new Quaternion());
+            _projectiles.Add(projectileObject);
             projectileObject.GetComponent<SpriteRenderer>().sprite = ProjectileSprite;
             projectileObject.GetComponent<ProjectileController>().Initiate(
                 ProjectileSpeed,
@@ -76,6 +74,7 @@ public class CharacterAttack : MonoBehaviour
             // Set Cooldown
             AttackCooldown = Cooldown;
             _moveCooldown = StopTime;
+            GetComponent<CharacterMovement>().Freeze(true);
 
             if (_animator != null)
             {
@@ -97,8 +96,10 @@ public class CharacterAttack : MonoBehaviour
                 ProjectilePrefab,
                 transform.position + (Vector3)direction * 0.1f,
                 Quaternion.AngleAxis(90 + 180 / 3.1416f * Mathf.Atan2(direction.y,direction.x),Vector3.forward));
+            _projectiles.Add(meleeObject);
             meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
             ProjectileController pController = meleeObject.GetComponent<ProjectileController>();
+            pController.Knockback = 4f;
             pController.Initiate(
                 MeleeSpeed,
                 gameObject.GetComponent<CharacterMovement>().Direction,
@@ -107,12 +108,11 @@ public class CharacterAttack : MonoBehaviour
                 gameObject.tag == "Player");
 
             pController.FadeAway = gameObject.tag == "Player";
-            pController.Knockback = 4f;
-
-
+            
             // Set Cooldown
             AttackCooldown = Cooldown;
             _moveCooldown = StopTime;
+            GetComponent<CharacterMovement>().Freeze(true);
 
             if (_animator != null)
             {
@@ -127,9 +127,17 @@ public class CharacterAttack : MonoBehaviour
     /// <param name="frozen"></param>
     public void FreezeProjectiles(bool frozen)
     {
-        for(int i = 0; i < _projectiles.Length; i++)
+        for(int i = 0; i < _projectiles.Count; i++)
         {
-            _projectiles[i].GetComponent<CharacterMovement>().Freeze(frozen);
+            if (_projectiles[i] == null)
+            {
+                _projectiles.RemoveAt(i);
+                i--;
+            }
+            else
+            {
+                _projectiles[i].GetComponent<CharacterMovement>().Freeze(frozen);
+            }
         }
     }
 }

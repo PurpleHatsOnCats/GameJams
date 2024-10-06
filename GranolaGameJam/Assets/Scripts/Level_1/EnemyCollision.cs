@@ -11,9 +11,12 @@ public class EnemyCollision : MonoBehaviour
     /// Destroys object and damages character when collided 
     /// </summary>
     /// <param name="collision"></param>
-    public void OnCollision2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && GetComponent<CharacterMovement>().StunTime == 0)
+        if (!GetComponent<CharacterMovement>().Frozen && 
+            collision.gameObject.tag == "Player" && 
+            GetComponent<CharacterMovement>().StunTime <= 0 &&
+            collision.gameObject.GetComponent<CharacterMovement>().StunTime <= 0)
         {
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(PhysicalDamage);
         }

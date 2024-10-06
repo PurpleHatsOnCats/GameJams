@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2874371599113062952}
   - component: {fileID: 6400714051563155150}
   - component: {fileID: 9062340975805055395}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player_1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.66, y: 0.58}
   m_EdgeRadius: 0
 --- !u!50 &3434475205094492536
 Rigidbody2D:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 1101044016690836092, guid: cab0b44f31be0ab4684eab6e21ecd1d9, type: 3}
   ProjectileSprite: {fileID: 21300000, guid: ff52219ef5eeb1a458ba53ff08fda4d1, type: 3}
-  MeleeSprite: {fileID: 21300000, guid: 64004e6bf7acd8345a25c21df86f52cf, type: 3}
+  MeleeSprite: {fileID: 21300000, guid: a103d1b4ad99255489cc228451fa7317, type: 3}
   ProjectileDamage: 1
   MeleeDamage: 2
   ProjectileSpeed: 10
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
-  Direction: 0
+  Direction: 4
   StunTime: 0
 --- !u!114 &6400714051563155150
 MonoBehaviour:

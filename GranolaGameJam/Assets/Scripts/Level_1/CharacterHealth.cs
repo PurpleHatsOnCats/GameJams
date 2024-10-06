@@ -8,6 +8,7 @@ public class CharacterHealth : MonoBehaviour
     public float Health;
 
     private float _redTimer;
+    public float P_Health
     {
         get
         {
@@ -51,17 +52,16 @@ public class CharacterHealth : MonoBehaviour
     /// <param name="amount"></param>
     public void TakeDamage(float amount)
     {
-        Health -= amount;
+        P_Health -= amount;
         if(gameObject.tag == "Player")
         {
-            GetComponent<CharacterMovement>().StunTime = 1f;
+            GetComponent<CharacterMovement>().StunTime = 1.5f;
         }
-        else
-        {
-            _redTimer = 0.3f;
-            Color color = GetComponent<SpriteRenderer>().color;
-            color = new Color(1, 0.7f, 0.7f);
-            GetComponent<SpriteRenderer>().color = color;
-        }
+        
+        _redTimer = 0.3f;
+        Color color = GetComponent<SpriteRenderer>().color;
+        color = new Color(1, 0.7f, 0.7f);
+        GetComponent<SpriteRenderer>().color = color;
+        
     }
 }

@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
     public float MoveSpeed = 3;
     public FaceDirection Direction;
+    public bool Frozen;
 
     private Animator _animator;
-    private bool _frozen;
-    private bool _movementFrozen;
     private Vector2 _lastVelocity;
     [HideInInspector]
     public float StunTime;
@@ -28,22 +28,29 @@ public class CharacterMovement : MonoBehaviour
             
     public void Update()
     {
-        if(StunTime > 0)
+        if (StunTime > 0)
         {
-            if(StunTime % 0.4f > 0.2f)
-            {
-                Color color = GetComponent<SpriteRenderer>().color;
-                color.a = 0.5f;
-                GetComponent<SpriteRenderer>().color = color;
-            }
-            else
-            {
-                Color color = GetComponent<SpriteRenderer>().color;
-                color.a = 1f;
-                GetComponent<SpriteRenderer>().color = color;
-            }
-
             StunTime -= Time.deltaTime;
+
+            // Flash Color
+            Color color = GetComponent<SpriteRenderer>().color;
+            if (color.CompareRGB(new Color(1, 1, 1)))
+            {
+                if (StunTime % 0.4f > 0.2f)
+                {
+
+                    color.a = 0.5f;
+                }
+                else
+                { 
+                    color.a = 1f;
+                    
+                }
+                GetComponent<SpriteRenderer>().color = color;
+            }
+            
+
+            
             if (_stunDistanceLeft > 0)
             {
                 _stunDistanceLeft -= (_lastPosition - (Vector2)transform.position).magnitude;
@@ -59,15 +66,20 @@ public class CharacterMovement : MonoBehaviour
             StunTime = 0;
             _stunDistanceLeft = 0;
 
+            // Normal Color
             Color color = GetComponent<SpriteRenderer>().color;
             color.a = 1f;
             GetComponent<SpriteRenderer>().color = color;
+        }
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
         }
     }
 
     public void Move(FaceDirection direction)
     {
-        if (!_movementFrozen)
+        if (!Frozen)
         {
             if (direction != FaceDirection.Stop)
             {
@@ -83,10 +95,6 @@ public class CharacterMovement : MonoBehaviour
             }
             GetComponent<Rigidbody2D>().velocity = GameDictionary.moveDirections[direction] * MoveSpeed;
         }
-        if (_animator != null)
-        {
-            _animator.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
-        }
     }
     /// <summary>
     /// Freezes movement
@@ -94,25 +102,19 @@ public class CharacterMovement : MonoBehaviour
     /// <param name="frozen"></param>
     public void Freeze(bool frozen)
     {
-        _frozen = frozen;
-        GetComponent<BoxCollider2D>().enabled = !_frozen;
-        FreezeMovement(_frozen);
-    }
-    public void FreezeMovement(bool frozen)
-    {
-        _movementFrozen = frozen || _frozen;
-        if (GetComponent<Rigidbody2D>().isKinematic == frozen)
+        if(Frozen != frozen)
         {
-            if (_movementFrozen)
+            Frozen = frozen;
+            if (Frozen)
             {
                 _lastVelocity = GetComponent<Rigidbody2D>().velocity;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
             else
             {
                 GetComponent<Rigidbody2D>().velocity = _lastVelocity;
             }
-            GetComponent<Rigidbody2D>().isKinematic = !(frozen || _frozen);
+            GetComponent<Rigidbody2D>().isKinematic = Frozen;
         }
     }
     public void RecieveKnockback(Vector2 velocity, float distance, float time)
