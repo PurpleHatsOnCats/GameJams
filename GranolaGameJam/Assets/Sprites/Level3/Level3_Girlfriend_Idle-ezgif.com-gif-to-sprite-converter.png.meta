@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8af79375c7c06064eb6bebacf373c12c
+guid: 59aa0c0b65e71b74595c92a82203eb65
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_0
+      name: Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 5
-        width: 105
-        height: 68
+        x: 1
+        y: 0
+        width: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94f5994b1873e8844aa95df6cd4e1e85
-      internalID: -818983332
+      spriteID: 71753bdf868beee4c8598b2d8fec2609
+      internalID: -1170710633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_1
+      name: Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_1
       rect:
         serializedVersion: 2
-        x: 353
-        y: 7
-        width: 103
-        height: 67
+        x: 17
+        y: 0
+        width: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84d35b238f229ea44924aa7da941f025
-      internalID: 1874783278
+      spriteID: fba316b3a7fe9bf40970db1c1e516284
+      internalID: 1710732544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7367cc5ee16af34694e163dcc605a52
+      internalID: 1053635952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2302adf2ac255243b177f6dc530db28
+      internalID: 1198555534
       vertices: []
       indices: 
       edges: []
@@ -162,8 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Level2_ChildAwakeSpritesheet_0: -818983332
-      Level2_ChildAwakeSpritesheet_1: 1874783278
+      Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_0: -1170710633
+      Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_1: 1710732544
+      Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_2: 1053635952
+      Level3_Girlfriend_Idle-ezgif.com-gif-to-sprite-converter_3: 1198555534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

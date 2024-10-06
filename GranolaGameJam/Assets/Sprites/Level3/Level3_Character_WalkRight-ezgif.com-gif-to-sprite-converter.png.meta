@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8af79375c7c06064eb6bebacf373c12c
+guid: 2f6739cc089edb1438cd649891d6543d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_0
+      name: Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 5
-        width: 105
-        height: 68
+        x: 3
+        y: 0
+        width: 9
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94f5994b1873e8844aa95df6cd4e1e85
-      internalID: -818983332
+      spriteID: 6584b61223b52354cb10c8b4c7a5aa62
+      internalID: 879830972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level2_ChildAwakeSpritesheet_1
+      name: Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_1
       rect:
         serializedVersion: 2
-        x: 353
-        y: 7
-        width: 103
-        height: 67
+        x: 19
+        y: 0
+        width: 9
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84d35b238f229ea44924aa7da941f025
-      internalID: 1874783278
+      spriteID: 2923add57be1e5b4385e49fdb9e890ac
+      internalID: 537154665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2af7fb6d751bb4fbd83b77766538b2
+      internalID: -858144870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a996ed99910fb41a55807f7cba46ef
+      internalID: -429552261
       vertices: []
       indices: 
       edges: []
@@ -162,8 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Level2_ChildAwakeSpritesheet_0: -818983332
-      Level2_ChildAwakeSpritesheet_1: 1874783278
+      Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_0: 879830972
+      Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_1: 537154665
+      Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_2: -858144870
+      Level3_Character_WalkRight-ezgif.com-gif-to-sprite-converter_3: -429552261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

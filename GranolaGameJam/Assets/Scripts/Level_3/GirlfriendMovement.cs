@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class GirlfriendMovement : MonoBehaviour
 {
 
     //information for jumping
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 playerDirection = Vector3.zero;
 
         //Right movement
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             //change direction
             animator.SetBool("WalkRight", true);
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("WalkRight", false);
         }
         //left movement
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             //change direction
             animator.SetBool("WalkLeft", true);
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.W) && hasJump)
+        if (Input.GetKey(KeyCode.UpArrow) && hasJump)
         {
             Vector2 jumpVect = Vector2.up * jumpForce;
             rBody.AddForce(jumpVect);
