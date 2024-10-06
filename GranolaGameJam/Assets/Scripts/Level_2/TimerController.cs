@@ -66,7 +66,7 @@ public class TimerController : MonoBehaviour
                 timerSprite.sprite = sprites[5];
 
                 //you win
-                SceneManager.LoadScene("cutscene2");
+                SceneManager.LoadScene("cutscene3");
 
                 break;
         }

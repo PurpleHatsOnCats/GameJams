@@ -8,7 +8,6 @@ public class CharacterHealth : MonoBehaviour
     public float Health;
 
     private float _redTimer;
-    private float P_Health
     {
         get
         {
@@ -19,7 +18,8 @@ public class CharacterHealth : MonoBehaviour
             Health = value;
             if(Health <= 0)
             {
-                if(gameObject.tag == "Player")
+
+                if (gameObject.tag == "Player")
                 {
                     // TODO: restart level
                 }
@@ -51,7 +51,7 @@ public class CharacterHealth : MonoBehaviour
     /// <param name="amount"></param>
     public void TakeDamage(float amount)
     {
-        P_Health -= amount;
+        Health -= amount;
         if(gameObject.tag == "Player")
         {
             GetComponent<CharacterMovement>().StunTime = 1f;
