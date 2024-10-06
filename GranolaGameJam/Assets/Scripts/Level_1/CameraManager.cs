@@ -14,9 +14,9 @@ public class CameraManager : MonoBehaviour
     public UnityEvent CameraStartMove;
     public UnityEvent CameraStopMove;
 
-    [HideInInspector]
+    
     public bool Moving = false;
-    [HideInInspector]
+    
     public Vector2 CurrentArea = new Vector2(0, 0);
     private Vector2 TargetPosition = new Vector2(0,0);
 
