@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 1637701340}
   - component: {fileID: 1637701339}
   m_Layer: 0
-  m_Name: Cutscene- level 2 into 3
+  m_Name: Cutscene- Finale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,8 +485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da31e53736f28d14aa0aac08b03278ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 17
-  NewLevel: Level2_Instructions
+  delay: 18
+  NewLevel: MainMenu
 --- !u!4 &1637701340
 Transform:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984864618}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 60a3facd7107ccc4bae8fe3c583b7165, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 246a8cc660f1d0547badc51fb8fb0d0a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
