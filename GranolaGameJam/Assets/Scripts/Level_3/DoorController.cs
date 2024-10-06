@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
     {
         if (playerDoorEntered && otherDoor.GirlfriendDoorEntered)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("cutscene3");
         }
     }
 
