@@ -26,20 +26,18 @@ public class UIController : MonoBehaviour
     private int _health;
     private bool StickUnlocked;
     private bool RockUnlocked;
-    
+
+    public void Start()
+    {
+        StickIcon.enabled = false;
+        RockIcon.enabled = false;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         Health = Player.GetComponent<CharacterHealth>().Health;
-        if (StickUnlocked)
-        {
-            // Display Stick
-        }
-        if (RockUnlocked)
-        {
-            // Display Rock
-        }
 
         Healthbar.sprite = HealthBars[_health];
     }
@@ -53,9 +51,11 @@ public class UIController : MonoBehaviour
         {
             case 1:
                 StickUnlocked = true;
+                StickIcon.enabled = true;
                 break;
             case 2:
                 RockUnlocked = true;
+                RockIcon.enabled = true;
                 break;
             default:
                 Debug.Log("Not a valid weapon");

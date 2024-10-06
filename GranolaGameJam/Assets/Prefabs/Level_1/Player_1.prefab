@@ -186,6 +186,9 @@ MonoBehaviour:
   StopTime: 0.3
   ProjectileDistance: 8
   MeleeDistance: 2
+  ProjectileUnlocked: 0
+  MeleeUnlocked: 0
+  AttackCooldown: 0
 --- !u!114 &7716584223952442596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 3
+  Defeated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2874371599113062952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +219,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   Direction: 4
+  Frozen: 0
   StunTime: 0
+  _stunDistanceLeft: 0
+  _lastPosition: {x: 0, y: 0}
 --- !u!114 &6400714051563155150
 MonoBehaviour:
   m_ObjectHideFlags: 0

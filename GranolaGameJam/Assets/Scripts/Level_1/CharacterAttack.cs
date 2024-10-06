@@ -15,6 +15,8 @@ public class CharacterAttack : MonoBehaviour
     public float StopTime = 0.3f;
     public float ProjectileDistance = 8;
     public float MeleeDistance = 2;
+    public bool ProjectileUnlocked = true;
+    public bool MeleeUnlocked = true;
 
     private List<GameObject> _projectiles = new List<GameObject>(5);
     [HideInInspector]
@@ -56,7 +58,7 @@ public class CharacterAttack : MonoBehaviour
     /// </summary>
     public void ProjectileAttack()
     {
-        if(AttackCooldown == 0)
+        if(AttackCooldown == 0 && ProjectileUnlocked)
         {
             // Spawn projectile
             GameObject projectileObject = Instantiate(
@@ -89,7 +91,7 @@ public class CharacterAttack : MonoBehaviour
     /// </summary>
     public void MeleeAttack()
     {
-        if (AttackCooldown == 0)
+        if (AttackCooldown == 0 && MeleeUnlocked)
         {
             // Spawn projectile
             Vector2 direction = GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction];
@@ -139,6 +141,28 @@ public class CharacterAttack : MonoBehaviour
             {
                 _projectiles[i].GetComponent<CharacterMovement>().Freeze(frozen);
             }
+        }
+    }
+    public void DestroyProjectiles()
+    {
+        for(int i = 0; i<_projectiles.Count; i++)
+        {
+            Destroy(_projectiles[i]);
+        }
+    }
+    public void UnlockWeapon(int identifier)
+    {
+        switch (identifier)
+        {
+            case 1:
+                MeleeUnlocked = true;
+                break;
+            case 2:
+                ProjectileUnlocked = true;
+                break;
+            default:
+                Debug.Log("Not a valid weapon");
+                break;
         }
     }
 }
