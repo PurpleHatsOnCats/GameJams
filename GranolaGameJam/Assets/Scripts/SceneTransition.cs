@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     //fields
-    int counter = 3;
+    [SerializeField]
+    private int levelToLoad;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,8 @@ public class SceneTransition : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(counter);
+            SceneManager.LoadScene($"Level_{levelToLoad}");
 
-            counter += 3;
         }
     }
 }
