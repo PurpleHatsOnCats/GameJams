@@ -22,6 +22,11 @@ public class SceneTransition : MonoBehaviour
             SceneManager.LoadScene(counter);
 
             counter += 3;
+
+            if (counter >= 9) 
+            {
+                counter = 3;
+            }
         }
     }
 }
