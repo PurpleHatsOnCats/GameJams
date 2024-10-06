@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     //information for jumping
     Vector3 leapDirection = new Vector3(0, 0, 0);
-    float jumpForce = 200f;
+    float jumpForce = 350f;
 
     float speed = 3f;
 
