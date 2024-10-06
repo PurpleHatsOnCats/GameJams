@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterHealth : MonoBehaviour
 {
     public float Health;
+
     private float P_Health
     {
         get
@@ -17,7 +18,8 @@ public class CharacterHealth : MonoBehaviour
             Health = value;
             if(Health <= 0)
             {
-                if(gameObject.tag == "Player")
+
+                if (gameObject.tag == "Player")
                 {
                     // TODO: restart level
                 }

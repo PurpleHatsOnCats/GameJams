@@ -23712,6 +23712,37 @@ MonoBehaviour:
   UIOffset: {x: 0, y: -2}
   CameraSpeed: 30
   enemies: []
+--- !u!1 &1749026203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749026204}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1749026204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749026203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.1931024, y: -30.28185, z: 3.7317257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981465763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2520604250561029558, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
@@ -23724,3 +23755,4 @@ SceneRoots:
   - {fileID: 1333206072}
   - {fileID: 209172376}
   - {fileID: 463469397}
+  - {fileID: 1749026204}
