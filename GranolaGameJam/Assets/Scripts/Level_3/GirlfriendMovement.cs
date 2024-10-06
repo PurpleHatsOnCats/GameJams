@@ -6,6 +6,8 @@ using UnityEngine;
 public class GirlfriendMovement : MonoBehaviour
 {
 
+    Vector3 initialPosition; 
+
     //information for jumping
     Vector3 leapDirection = new Vector3(0, 0, 0);
     float jumpForce = 350f;
@@ -25,6 +27,7 @@ public class GirlfriendMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rBody = GetComponent<Rigidbody2D>();
         hasJump  = true;
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -110,4 +113,12 @@ public class GirlfriendMovement : MonoBehaviour
             hasJump = true;
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            gameObject.transform.position = initialPosition;
+        }
+    }
+
 }

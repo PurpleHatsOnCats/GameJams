@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Vector3 initialPosition = new Vector3(48.06f, -3.59f, 0f);
 
     //information for jumping
     Vector3 leapDirection = new Vector3(0, 0, 0);
@@ -108,6 +109,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground" && collision.gameObject.transform.position.y < gameObject.transform.position.y)
         {
             hasJump = true;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Fire")
+        {
+            gameObject.transform.position = initialPosition;
         }
     }
 }

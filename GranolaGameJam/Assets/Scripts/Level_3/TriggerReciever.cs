@@ -7,6 +7,8 @@ public class TriggerReciever : MonoBehaviour
     [SerializeField]
     private GameObject puddleCover;
 
+    public GameObject buttonDecor;
+
     [SerializeField]
     private float yPosition;
 
@@ -30,6 +32,7 @@ public class TriggerReciever : MonoBehaviour
             (puddleCover.transform.position.x, yPosition);
 
         Destroy(correspondingPuddle);
+        Destroy(buttonDecor);
 
     }
 
