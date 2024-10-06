@@ -26,6 +26,10 @@ public class CharacterAttack : MonoBehaviour
     }
     private void Update()
     {
+        if (_animator != null)
+        {
+            _animator.SetBool("Attacking", _moveCooldown > 0);
+        }
         if (_moveCooldown > 0)
         {
             _moveCooldown -= Time.deltaTime;
@@ -59,7 +63,7 @@ public class CharacterAttack : MonoBehaviour
             // Spawn projectile
             GameObject projectileObject = Instantiate(
                 ProjectilePrefab, 
-                transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*0.5f, 
+                transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*0.2f, 
                 new Quaternion());
             projectileObject.GetComponent<SpriteRenderer>().sprite = ProjectileSprite;
             projectileObject.GetComponent<ProjectileController>().Initiate(
@@ -76,7 +80,8 @@ public class CharacterAttack : MonoBehaviour
             if (_animator != null)
             {
                 _animator.SetTrigger("TrAttack");
-            }  
+                _animator.SetBool("Attacking", true);
+            }
         }
     }
     /// <summary>
@@ -87,10 +92,11 @@ public class CharacterAttack : MonoBehaviour
         if (AttackCooldown == 0)
         {
             // Spawn projectile
+            Vector2 direction = GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction];
             GameObject meleeObject = Instantiate(
                 ProjectilePrefab,
-                transform.position + (Vector3)GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction] * 0.5f,
-                new Quaternion());
+                transform.position + (Vector3)direction * 0.1f,
+                Quaternion.AngleAxis(90 + 180 / 3.1416f * Mathf.Atan2(direction.y,direction.x),Vector3.forward));
             meleeObject.GetComponent<SpriteRenderer>().sprite = MeleeSprite;
             meleeObject.GetComponent<ProjectileController>().Initiate(
                 MeleeSpeed,
@@ -99,6 +105,9 @@ public class CharacterAttack : MonoBehaviour
                 MeleeDistance,
                 gameObject.tag == "Player");
 
+            meleeObject.GetComponent<ProjectileController>().FadeAway = gameObject.tag == "Player";
+            
+
             // Set Cooldown
             AttackCooldown = Cooldown;
             _moveCooldown = StopTime;
@@ -106,6 +115,7 @@ public class CharacterAttack : MonoBehaviour
             if (_animator != null)
             {
                 _animator.SetTrigger("TrAttack");
+                _animator.SetBool("Attacking", true);
             }
         }
     }
