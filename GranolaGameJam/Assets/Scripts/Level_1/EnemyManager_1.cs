@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyManager_1 : MonoBehaviour
 {
-    public CameraManager camera;
-    public List<GameObject> enemies = new List<GameObject>();
+    public CameraManager cameraManager;
+    public List<GameObject> enemies;
 
     public void Start()
     {
-        //enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
     }
 
     public void FreezeAll()
@@ -40,7 +40,7 @@ public class EnemyManager_1 : MonoBehaviour
             }
             else
             {
-                bool inArea = GameDictionary.InGameArea((Vector2)enemies[i].transform.position,i==0,camera);
+                bool inArea = GameDictionary.InGameArea((Vector2)enemies[i].transform.position,i==0,cameraManager);
                 Debug.Log("Checking Enemies:" + (i+1) + "/" + enemies.Count + "; In area = " + inArea);
                 enemies[i].GetComponent<EnemyController>().Freeze(!inArea);
             }

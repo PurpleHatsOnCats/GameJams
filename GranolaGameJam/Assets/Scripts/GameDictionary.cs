@@ -16,7 +16,10 @@ public static class GameDictionary
     };
     public static bool InGameArea(Vector2 position, bool debug, CameraManager camera)
     {
-        if(debug) Debug.Log("Rectangle: " + new Rect(camera.CurrentArea * camera.LevelSize - camera.LevelSize / 2, camera.LevelSize));
+        if (debug)
+        { 
+            Debug.Log("Rectangle: " + new Rect(camera.CurrentArea * camera.LevelSize - camera.LevelSize / 2, camera.LevelSize)); 
+        }
         return new Rect(camera.CurrentArea * camera.LevelSize - camera.LevelSize/2, camera.LevelSize).Contains(position);
     }
 }

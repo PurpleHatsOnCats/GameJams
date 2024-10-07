@@ -10,9 +10,12 @@ public class PickupController : MonoBehaviour
     public int ItemID;
     public float PickupRange;
     public GameObject Player;
+    public GameObject Particle;
+    public SpriteRenderer ControlDisplay;
     public bool InRange;
     public IntEvent ItemPickup;
     public UnityEvent Collected;
+    
 
     // Update is called once per frame
     void Update()
@@ -22,13 +25,15 @@ public class PickupController : MonoBehaviour
         InRange = (playerPosition - itemPosition).magnitude <= PickupRange;
         if (InRange)
         {
+
             GetComponent<SpriteRenderer>().color = new Color(1,1,1);
+            
         }
         else
         {
             GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
         }
-        
+        ControlDisplay.enabled = InRange;
     }
     public void AttemptPickup()
     {
@@ -38,5 +43,9 @@ public class PickupController : MonoBehaviour
             Collected.Invoke();
             Destroy(gameObject);
         }
+    }
+    public void ReleaseParticle()
+    {
+        Instantiate(Particle, transform.position, new Quaternion());
     }
 }

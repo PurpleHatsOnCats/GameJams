@@ -70,21 +70,18 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && PlayerFriendly)
         {
-            if(collision.gameObject.GetComponent<CharacterMovement>().StunTime == 0)
+            Debug.Log("Hit enemy, damage: " + Damage);
+            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
+            if(Knockback != 0)
             {
-                Debug.Log("Hit enemy, damage: " + Damage);
-                collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
-                if(Knockback != 0)
-                {
-                    collision.gameObject.GetComponent<CharacterMovement>().RecieveKnockback(
-                        GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*5, 
-                        Knockback, 
-                        1f);
-                }
-                Destroy(gameObject);
+                collision.gameObject.GetComponent<CharacterMovement>().RecieveKnockback(
+                    GameDictionary.moveDirections[gameObject.GetComponent<CharacterMovement>().Direction]*5, 
+                    Knockback, 
+                    1f);
             }
+            Destroy(gameObject);
         }
-        else if (collision.gameObject.tag == "Player" && !PlayerFriendly)
+        else if (collision.gameObject.tag == "Player" && !PlayerFriendly && collision.gameObject.GetComponent<CharacterMovement>().StunTime == 0)
         {
             collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(Damage);
             Destroy(gameObject);

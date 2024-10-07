@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 2520604250561029558, guid: 46ab117692d262449bc5c7b7a6e85851, type: 3}
     - target: {fileID: 2193358606459621844, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
       propertyPath: Cooldown
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2193358606459621844, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
       propertyPath: StopTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2193358606459621844, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
       propertyPath: ProjectileSpeed
-      value: 6
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2193358606459621844, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
       propertyPath: ProjectileSprite
@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2034016938, guid: b9ecadcd24b5eb44f9877250c2a5c465, type: 3}
+    - target: {fileID: 5699536995996091261, guid: 28a5f6ad2df98944bb0635d8d295c5c4, type: 3}
+      propertyPath: MoveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

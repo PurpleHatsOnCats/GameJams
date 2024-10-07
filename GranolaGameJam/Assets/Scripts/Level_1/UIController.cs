@@ -5,13 +5,35 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     public SpriteRenderer Healthbar;
-    public SpriteRenderer StickIcon;
-    public SpriteRenderer RockIcon;
+    public SpriteRenderer[] StickIcon;
+    public SpriteRenderer[] RockIcon;
     public GameObject Player;
 
     public Sprite[] HealthBars;
 
-    
+    private bool P_StickIcon
+    {
+        set
+        {
+            for(int i = 0; i < StickIcon.Length; i++)
+            {
+                StickIcon[i].enabled = value;
+            }
+        }
+
+    }
+    private bool P_RockIcon
+    {
+        set
+        {
+            for (int i = 0; i < StickIcon.Length; i++)
+            {
+                RockIcon[i].enabled = value;
+            }
+        }
+
+    }
+
     public float Health
     {
         set
@@ -24,13 +46,11 @@ public class UIController : MonoBehaviour
         }
     }
     private int _health;
-    private bool StickUnlocked;
-    private bool RockUnlocked;
 
     public void Start()
     {
-        StickIcon.enabled = false;
-        RockIcon.enabled = false;
+        P_StickIcon = false;
+        P_RockIcon = false;
     }
 
 
@@ -50,12 +70,10 @@ public class UIController : MonoBehaviour
         switch (identifier)
         {
             case 1:
-                StickUnlocked = true;
-                StickIcon.enabled = true;
+                P_StickIcon = true;
                 break;
             case 2:
-                RockUnlocked = true;
-                RockIcon.enabled = true;
+                P_RockIcon = true;
                 break;
             default:
                 Debug.Log("Not a valid weapon");
