@@ -119,7 +119,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = _lastVelocity;
             }
-            GetComponent<Rigidbody2D>().isKinematic = Frozen;
+            //GetComponent<Rigidbody2D>().isKinematic = Frozen;
         }
     }
     public void RecieveKnockback(Vector2 velocity, float distance, float time)

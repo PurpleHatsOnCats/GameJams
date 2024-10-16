@@ -117,6 +117,7 @@ public class CharacterAttack : MonoBehaviour
             _moveCooldown = StopTime;
             GetComponent<CharacterMovement>().Freeze(true);
 
+
             if (_animator != null)
             {
                 _animator.SetTrigger("TrAttack");
