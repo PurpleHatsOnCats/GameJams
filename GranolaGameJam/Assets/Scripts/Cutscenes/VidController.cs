@@ -27,6 +27,7 @@ public class VidController : MonoBehaviour
     }
     private void Update()
     {
+        videoPlayer.Prepare();
         if (started && !videoPlayer.isPlaying)
         {
             started = false;
