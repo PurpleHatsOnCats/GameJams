@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("WalkRight", true);
 
             //player moves right
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 2 *Time.deltaTime
-                , gameObject.transform.position.y);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 2 * Time.deltaTime
+                , gameObject.transform.position.y, -1);
         }
         else
         {
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
             //player moves right
             gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2 * Time.deltaTime
-                , gameObject.transform.position.y);
+                , gameObject.transform.position.y,-1);
         }
         else
         {
